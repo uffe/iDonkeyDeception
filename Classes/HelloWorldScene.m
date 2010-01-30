@@ -35,8 +35,8 @@
 	if( (self=[super init] )) {
 		
 		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
-						   [Helper prepAudio:@"applause"],@"applause",
-						   [Helper prepAudio:@"trombone"],@"trombone",
+							[Helper prepAudio:@"applause"],@"applause",
+							[Helper prepAudio:@"trombone"],@"trombone",
 							nil] retain];
 		
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -63,28 +63,17 @@
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
-		CCSprite *lawn = [CCSprite spriteWithFile:@"grasandfence.png"];
-		lawn.position = ccp(480.0f/2, 150);
+		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
+		lawn.position = ccp(480.0f/2-7.0, 97);
 		[self addChild:lawn];
-
 		
-		
-		// create and initialize a Label
-		CCLabel* label = [CCLabel labelWithString:@"Trick the Donkey" fontName:@"Marker Felt" fontSize:14];
-
-		// ask director the the window size
-
-	
-		// position the label on the center of the screen
-		label.position =  ccp( 60, 300 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-	}
+		}
 	return self;
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (mode!=ModeAlive)
+		return kEventHandled;
 	UITouch *touch = [touches anyObject];
 	if (touch) {
 		CGPoint location = [touch locationInView: [touch view]];
@@ -111,11 +100,14 @@
 }
 
 -(void) tick: (ccTime) dt {
-	#define DONKEY_CARROT_REACT_DISTANCE 50.0f
-	#define DONKEY_VEL 40.0f
+
+	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+	#define DONKEY_VEL 5.0f
+	#define DONKEY_ACC 3.0;
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
 	#define REVERT_TIME 1.0f
+
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	timeSinceAction += dt;
@@ -132,14 +124,14 @@
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
 			// move the donkey
-			float moved = DONKEY_VEL*dt;
+			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
 		}
 	} else if (mode==ModeCarrotCaught) {
