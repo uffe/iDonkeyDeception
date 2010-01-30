@@ -115,9 +115,10 @@
 	#define DONKEY_VEL 40.0f
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
+	#define REVERT_TIME 1.0f
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
-	
+	timeSinceAction += dt;
 	if (mode==ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
@@ -125,10 +126,9 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-			resetSceneAction = [[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS] retain]; 
-			[carrot runAction:resetSceneAction];
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
-			
+			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:CARROT_INITIAL_POS]];
+			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
+			timeSinceAction=0.0f;
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			
@@ -143,8 +143,7 @@
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
 		}
 	} else if (mode==ModeCarrotCaught) {
-		if ([resetSceneAction isDone]) {
-			[resetSceneAction release];
+		if (timeSinceAction > REVERT_TIME) {
 			mode=ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
