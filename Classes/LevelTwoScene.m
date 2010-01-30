@@ -28,7 +28,7 @@
 #define CARROT_INITIAL_POS ccp(400,260)
 #define DONKEY_INITIAL_POS ccp(40, 180)
 #define FISH_INITIAL_POS ccp(240, 80)
-#define FISH_MIN_X 85
+#define FISH_MIN_X 105
 #define FISH_MAX_X 380
 // on "init" you need to initialize your instance
 -(id) init
@@ -133,7 +133,7 @@
 	#define REVERT_TIME 1.0f
 	#define FISH_CARROT_REACT_DISTANCE 70.0f
 	#define FISH_VEL 20.0f
-
+	#define	FISH_MOVEMENT_THRESHOLD 2.0f
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
@@ -150,11 +150,13 @@
 		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
 			// move the fish
 			float moved;
-			if (fcDist > 0)
+			if (fcDist > 0){
 				moved = FISH_VEL*dt;
-			else 
+				fish.flipX = YES;
+			} else {
 				moved = -FISH_VEL*dt;
-
+				fish.flipX = NO;
+			} 
 			if (fish.position.x+moved > FISH_MIN_X && fish.position.x+moved < FISH_MAX_X) {
 				fish.position=ccp(fish.position.x+moved, fish.position.y);
 			}
