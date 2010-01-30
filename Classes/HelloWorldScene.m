@@ -125,12 +125,10 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-		} else if (donkey.position.x > FALL_DOWN_POS) {
-			// donkey fall down
-			[carrot runAction:[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS]];
+			resetSceneAction = [[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS] retain]; 
+			[carrot runAction:resetSceneAction];
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
-			//			[donkey runAction:[CCRotateTo actionWithDuration:1.0f angle:-471.0]];
-			//TODO: when action done, set mode to alive
+			
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			
@@ -143,6 +141,12 @@
 			// move the donkey
 			float moved = DONKEY_VEL*dt;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+		}
+	} else if (mode==ModeCarrotCaught) {
+		if ([resetSceneAction isDone]) {
+			[resetSceneAction release];
+			mode=ModeAlive;
+			[carrot setDisplayFrame:@"carrot" index:0];
 		}
 	}	
 }
