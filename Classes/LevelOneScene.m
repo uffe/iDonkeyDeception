@@ -123,7 +123,7 @@
 	if (mode==ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
-			[[audioPlayerDict objectForKey:@"trombone"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
@@ -136,7 +136,8 @@
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
-			[[audioPlayerDict objectForKey:@"applause"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
+
 
 			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
 
