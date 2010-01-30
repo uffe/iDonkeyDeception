@@ -63,8 +63,8 @@
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
-		CCSprite *lawn = [CCSprite spriteWithFile:@"grasandfence.png"];
-		lawn.position = ccp(480.0f/2, 150);
+		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
+		lawn.position = ccp(480.0f/2-7.0, 97);
 		[self addChild:lawn];
 		
 		}
@@ -72,6 +72,8 @@
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (mode!=ModeAlive)
+		return kEventHandled;
 	UITouch *touch = [touches anyObject];
 	if (touch) {
 		CGPoint location = [touch locationInView: [touch view]];
@@ -98,14 +100,17 @@
 }
 
 -(void) tick: (ccTime) dt {
-#define DONKEY_CARROT_REACT_DISTANCE 70.0f
-#define DONKEY_VEL 5.0f
-#define DONKEY_ACC 3.0;
-#define FALL_DOWN_POS 345.0f
-#define DONKEY_EAT_DIST 5.0f
+
+	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+	#define DONKEY_VEL 5.0f
+	#define DONKEY_ACC 3.0;
+	#define FALL_DOWN_POS 345.0f
+	#define DONKEY_EAT_DIST 5.0f
+	#define REVERT_TIME 1.0f
+
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
-	
+	timeSinceAction += dt;
 	if (mode==ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
@@ -113,14 +118,13 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-			resetSceneAction = [[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS] retain]; 
-			[carrot runAction:resetSceneAction];
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
-			
+			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:CARROT_INITIAL_POS]];
+			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
+			timeSinceAction=0.0f;
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
@@ -131,8 +135,7 @@
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
 		}
 	} else if (mode==ModeCarrotCaught) {
-		if ([resetSceneAction isDone]) {
-			[resetSceneAction release];
+		if (timeSinceAction > REVERT_TIME) {
 			mode=ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}

@@ -17,6 +17,8 @@ enum  {
 	GameMode mode;
 	NSDictionary *audioPlayerDict;
 	CCAction *resetSceneAction;
+	
+	float timeSinceAction;
 }
 
 // returns a Scene that contains the HelloWorld as the only child
