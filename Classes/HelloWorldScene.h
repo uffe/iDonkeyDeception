@@ -6,7 +6,8 @@
 
 enum  {
 	ModeAlive = 1,
-	ModeDead = 2
+	ModeDead = 2,
+	ModeCarrotCaught = 3
 } typedef GameMode;
 
 @interface HelloWorld : CCLayer
