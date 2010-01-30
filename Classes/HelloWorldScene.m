@@ -37,12 +37,19 @@
 		CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
+		[self setIsTouchEnabled:YES];
+		[self schedule: @selector(tick:)];
+		mode=ModeAlive;
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"carrot.png"];
-		carrot.position = ccp(200,250);
+		carrot.position = ccp(200,260);
 		[self addChild:carrot];
-		[self setIsTouchEnabled:YES];
+		
+		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
+		donkey.position = ccp(40, 180);
+		[self addChild:donkey];
+
 		
 		
 		// create and initialize a Label
@@ -83,6 +90,27 @@
 	
 	// we ignore the event. Other receivers will receive this event.
 	return kEventHandled;
+	
+}
+
+-(void) tick: (ccTime) dt {
+	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+	#define DONKEY_VEL 30.0f
+	#define FALL_DOWN_POS 345.0f
+	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
+	if (donkey.position.x > FALL_DOWN_POS) {
+		// donkey fall down
+		if (mode==ModeAlive) {
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
+			mode=ModeDead;
+		}
+		
+	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > 0) {
+		//NSLog(@"Ticked! %f", dt);
+		// move the donkey
+		float moved = DONKEY_VEL*dt;
+		donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+	}
 	
 }
 
