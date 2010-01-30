@@ -26,8 +26,8 @@
 	return scene;
 }
 
-#define CARROT_INITIAL_POS ccp(400,260)
-#define DONKEY_INITIAL_POS ccp(40, 180)
+#define CARROT_INITIAL_POS ccp(400,290)
+#define DONKEY_INITIAL_POS ccp(40, 190)
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -60,10 +60,29 @@
 		[an addFrameWithFilename:@"carrotgone.png"];
 		[carrot addAnimation:an];
 		
-		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
+		// Add donkey and its animations
+		donkey = [CCSprite spriteWithFile:@"Donkey_neutral.png"];
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
+		CCAnimation *donkey_walk_animation = [CCAnimation animationWithName:@"donkey_walk" delay:0];
+		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
+		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_left_front.png"];
+		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
+		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_right_front.png"];
+		[donkey addAnimation:donkey_walk_animation];
+		donkey_walk_frame_index = 0;
+
+		CCAnimation *donkey_eat_animation = [CCAnimation animationWithName:@"donkey_eat" delay:0];
+		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state1.png"];
+		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state2.png"];
+		[donkey addAnimation:donkey_eat_animation];
+		
+		CCAnimation *donkey_neutral_animation = [CCAnimation animationWithName:@"donkey_neutral" delay:0];
+		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral.png"];
+		[donkey addAnimation:donkey_neutral_animation];
+		
+		// background
 		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
 		lawn.position = ccp(480.0f/2-7.0, 97);
 		[self addChild:lawn];
@@ -141,6 +160,10 @@
 			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+			donkey_walk_frame_index = donkey.position.x/10;
+			[donkey setDisplayFrame:@"donkey_walk" index:donkey_walk_frame_index%4];
+		} else {
+			[donkey setDisplayFrame:@"donkey_neutral" index:0];
 		}
 	} else if (mode==ModeCarrotCaught) {
 		if (timeSinceAction > REVERT_TIME) {

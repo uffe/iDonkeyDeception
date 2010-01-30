@@ -16,6 +16,7 @@ enum  {
 	CCSprite *donkey;
 	LevelOneMode mode;
 	NSDictionary *audioPlayerDict;
+	int donkey_walk_frame_index;
 	float timeSinceAction;
 }
 
