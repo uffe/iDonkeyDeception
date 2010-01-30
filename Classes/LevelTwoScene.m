@@ -64,12 +64,12 @@
 		[self addChild:donkey];
 		
 		CCSprite *water = [CCSprite spriteWithFile:@"vand.png"];
-		water.position = ccp(480.0f/2+230, 10);
+		water.position = ccp(480.0f/2+130, 140);
 		[self addChild:water];
-		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(20,20) duration:200000]];
+		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(10,10) duration:200000]];
 		
 		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
-		foreground.position = ccp(70, 120);
+		foreground.position = ccp(300, 110);
 		[self addChild:foreground];
 		
 
