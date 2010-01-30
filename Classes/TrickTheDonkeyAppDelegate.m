@@ -52,8 +52,8 @@
 	[window makeKeyAndVisible];		
 		
 		
-	[[CCDirector sharedDirector] runWithScene: [LevelOne scene]];
-//	[[CCDirector sharedDirector] runWithScene: [LevelTwo scene]];
+//	[[CCDirector sharedDirector] runWithScene: [LevelOne scene]];
+	[[CCDirector sharedDirector] runWithScene: [LevelTwo scene]];
 }
 
 

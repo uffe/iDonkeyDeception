@@ -199,10 +199,9 @@
 		9BEF4034111483E1009FA185 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402E111483E1009FA185 /* fish.png */; };
 		9BEF4035111483E1009FA185 /* grassandfence.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402F111483E1009FA185 /* grassandfence.png */; };
 		9BEF42081114AC83009FA185 /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42031114AC83009FA185 /* bane-2-forgrund.png */; };
-		9BEF42091114AC83009FA185 /* carrot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42041114AC83009FA185 /* carrot.png */; };
-		9BEF420A1114AC83009FA185 /* carrotgone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42051114AC83009FA185 /* carrotgone.png */; };
 		9BEF420B1114AC83009FA185 /* DonkeySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42061114AC83009FA185 /* DonkeySprite1.png */; };
 		9BEF420C1114AC83009FA185 /* vand.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42071114AC83009FA185 /* vand.png */; };
+		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
 		A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */; };
@@ -425,10 +424,9 @@
 		9BEF402E111483E1009FA185 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		9BEF402F111483E1009FA185 /* grassandfence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassandfence.png; sourceTree = "<group>"; };
 		9BEF42031114AC83009FA185 /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
-		9BEF42041114AC83009FA185 /* carrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrot.png; sourceTree = "<group>"; };
-		9BEF42051114AC83009FA185 /* carrotgone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrotgone.png; sourceTree = "<group>"; };
 		9BEF42061114AC83009FA185 /* DonkeySprite1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DonkeySprite1.png; sourceTree = "<group>"; };
 		9BEF42071114AC83009FA185 /* vand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vand.png; sourceTree = "<group>"; };
+		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
 		A23FFFEE11148EE500E39E37 /* LevelTwoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwoScene.h; sourceTree = "<group>"; };
@@ -813,8 +811,6 @@
 			isa = PBXGroup;
 			children = (
 				9BEF42031114AC83009FA185 /* bane-2-forgrund.png */,
-				9BEF42041114AC83009FA185 /* carrot.png */,
-				9BEF42051114AC83009FA185 /* carrotgone.png */,
 				9BEF42061114AC83009FA185 /* DonkeySprite1.png */,
 				9BEF42071114AC83009FA185 /* vand.png */,
 				AD0968671114A340005822FB /* Donkey */,
@@ -823,6 +819,7 @@
 				9BEF402C111483E1009FA185 /* Carrot_alt1_gone.png */,
 				9BEF402D111483E1009FA185 /* Carrot_alt1.png */,
 				9BEF402E111483E1009FA185 /* fish.png */,
+				A20940F31114BCFB0028AC3B /* fishclosed.png */,
 				9BEF402F111483E1009FA185 /* grassandfence.png */,
 			);
 			name = Sprites;
@@ -1019,10 +1016,9 @@
 				AD09687D1114A364005822FB /* Donkey_stretch_neutral.png in Resources */,
 				AD09687E1114A364005822FB /* Donkey_stretch_right_front.png in Resources */,
 				9BEF42081114AC83009FA185 /* bane-2-forgrund.png in Resources */,
-				9BEF42091114AC83009FA185 /* carrot.png in Resources */,
-				9BEF420A1114AC83009FA185 /* carrotgone.png in Resources */,
 				9BEF420B1114AC83009FA185 /* DonkeySprite1.png in Resources */,
 				9BEF420C1114AC83009FA185 /* vand.png in Resources */,
+				A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
