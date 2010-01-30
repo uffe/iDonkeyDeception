@@ -131,6 +131,7 @@
 	#define DONKEY_EAT_DIST 5.0f
 	#define FISH_EAT_DONKEY_DIST 50.0f
 	#define REVERT_TIME 1.0f
+	#define DONKEY_MAX_X 130.0f
 	#define FISH_CARROT_REACT_DISTANCE 70.0f
 	#define FISH_VEL 20.0f
 	#define	FISH_MOVEMENT_THRESHOLD 2.0f
@@ -163,7 +164,7 @@
 		}
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=L2ModeCarrotCaught;
-			[[audioPlayerDict objectForKey:@"trombone"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
@@ -176,12 +177,14 @@
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=L2ModeDead;
-			[[audioPlayerDict objectForKey:@"applause"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
 			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
-			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
+			if (newPos.x < DONKEY_MAX_X)
+				donkey.position=newPos;
 		}
 	} else if (mode==L2ModeCarrotCaught) {
 		if (timeSinceAction > REVERT_TIME) {
