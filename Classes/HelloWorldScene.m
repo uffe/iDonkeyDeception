@@ -25,6 +25,8 @@
 	return scene;
 }
 
+#define CARROT_INITIAL_POS ccp(400,260)
+#define DONKEY_INITIAL_POS ccp(40, 180)
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -49,11 +51,11 @@
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"carrot.png"];
-		carrot.position = ccp(200,260);
+		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
-		donkey.position = ccp(40, 180);
+		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
 		CCSprite *lawn = [CCSprite spriteWithFile:@"grasandfence.png"];
@@ -111,26 +113,27 @@
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	
-	if (dcDist < DONKEY_EAT_DIST) {
-		if (mode==ModeAlive) {
+	if (mode==ModeAlive) {	
+		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
 			[[audioPlayerDict objectForKey:@"trombone"] play];
-		}
-	} else if (donkey.position.x > FALL_DOWN_POS) {
-		// donkey fall down
-		if (mode==ModeAlive) {
+			[carrot runAction:[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS]];
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
+//			[donkey runAction:[CCRotateTo actionWithDuration:1.0f angle:-471.0]];
+			//TODO: when action done, set mode to alive
+		} else if (donkey.position.x > FALL_DOWN_POS) {
+			// donkey fall down
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
-		}		
-	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
-		//NSLog(@"Ticked! %f", dt);
-		// move the donkey
-		float moved = DONKEY_VEL*dt;
-		donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
-	}
-	
+		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
+			//NSLog(@"Ticked! %f", dt);
+			// move the donkey
+			float moved = DONKEY_VEL*dt;
+			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+		}
+	}	
 }
 
 

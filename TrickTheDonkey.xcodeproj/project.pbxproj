@@ -774,6 +774,7 @@
 				50F414EE1069373D002A0D5E /* Icon.png */,
 				50F414EF1069373D002A0D5E /* Info.plist */,
 			);
+			includeInIndex = 1;
 			path = Resources;
 			sourceTree = "<group>";
 		};
