@@ -35,8 +35,8 @@
 	if( (self=[super init] )) {
 		
 		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
-						   [Helper prepAudio:@"applause"],@"applause",
-						   [Helper prepAudio:@"trombone"],@"trombone",
+							[Helper prepAudio:@"applause"],@"applause",
+							[Helper prepAudio:@"trombone"],@"trombone",
 							nil] retain];
 		
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -66,21 +66,8 @@
 		CCSprite *lawn = [CCSprite spriteWithFile:@"grasandfence.png"];
 		lawn.position = ccp(480.0f/2, 150);
 		[self addChild:lawn];
-
 		
-		
-		// create and initialize a Label
-		CCLabel* label = [CCLabel labelWithString:@"Trick the Donkey" fontName:@"Marker Felt" fontSize:14];
-
-		// ask director the the window size
-
-	
-		// position the label on the center of the screen
-		label.position =  ccp( 60, 300 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-	}
+		}
 	return self;
 }
 
@@ -111,11 +98,11 @@
 }
 
 -(void) tick: (ccTime) dt {
-	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
-	#define DONKEY_VEL 5.0f
-	#define DONKEY_ACC 2.0;
-	#define FALL_DOWN_POS 345.0f
-	#define DONKEY_EAT_DIST 5.0f
+#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+#define DONKEY_VEL 5.0f
+#define DONKEY_ACC 3.0;
+#define FALL_DOWN_POS 345.0f
+#define DONKEY_EAT_DIST 5.0f
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	
@@ -126,11 +113,10 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-		} else if (donkey.position.x > FALL_DOWN_POS) {
-			// donkey fall down
-			[carrot runAction:[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS]];
-			[donkey runAction:[CCRotateTo actionWithDuration:1.0f angle:90.0]];
-			//TODO: when action done, set mode to alive
+			resetSceneAction = [[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS] retain]; 
+			[carrot runAction:resetSceneAction];
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
+			
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			
@@ -143,6 +129,12 @@
 			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
+		}
+	} else if (mode==ModeCarrotCaught) {
+		if ([resetSceneAction isDone]) {
+			[resetSceneAction release];
+			mode=ModeAlive;
+			[carrot setDisplayFrame:@"carrot" index:0];
 		}
 	}	
 }
