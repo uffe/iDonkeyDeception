@@ -16,8 +16,6 @@ enum  {
 	CCSprite *donkey;
 	GameMode mode;
 	NSDictionary *audioPlayerDict;
-	CCAction *resetSceneAction;
-	
 	float timeSinceAction;
 }
 
