@@ -39,7 +39,6 @@
 		[self addChild:donkey];
 		donkey.position = L2_DONKEY_INITIAL_POS;
 		
-		
 		// add fish
 		fish = [CCSprite spriteWithFile:@"fishclosed.png"];
 		fish.scaleX = 0.5f;
@@ -63,10 +62,7 @@
 		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
 		foreground.position = ccp(300, 110);
 		[self addChild:foreground];
-		
-
-		
-		}
+	}
 	return self;
 }
 
