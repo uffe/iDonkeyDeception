@@ -14,6 +14,7 @@ enum  {
 	CCSprite *carrot;
 	CCSprite *donkey;
 	GameMode mode;
+	NSDictionary *audioPlayerDict;
 }
 
 // returns a Scene that contains the HelloWorld as the only child
