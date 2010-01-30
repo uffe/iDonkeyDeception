@@ -134,7 +134,6 @@
 	#define DONKEY_MAX_X 130.0f
 	#define FISH_CARROT_REACT_DISTANCE 70.0f
 	#define FISH_VEL 20.0f
-	#define	FISH_MOVEMENT_THRESHOLD 2.0f
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
