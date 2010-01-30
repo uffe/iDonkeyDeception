@@ -12,9 +12,9 @@
 @implementation LevelOne
 
 
-#define DONKEY_INITIAL_POS_X 40
-#define CARROT_INITIAL_POS ccp(400,290)
-#define DONKEY_INITIAL_POS ccp(DONKEY_INITIAL_POS_X, 190)
+#define L1_DONKEY_INITIAL_POS_X 40
+#define L1_CARROT_INITIAL_POS ccp(400,290)
+#define L1_DONKEY_INITIAL_POS ccp(L1_DONKEY_INITIAL_POS_X, 190)
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -33,7 +33,6 @@
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
-		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
@@ -43,7 +42,7 @@
 		
 		// Add donkey and its animations
 		donkey = [CCSprite spriteWithFile:@"Donkey_neutral.png"];
-		donkey.position = DONKEY_INITIAL_POS;
+//		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
 		CCAnimation *donkey_stretch_animation = [CCAnimation animationWithName:@"donkey_stretch" delay:0];
@@ -65,6 +64,10 @@
 		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state2.png"];
 		[donkey addAnimation:donkey_eat_animation];
 		
+
+		carrot.position = L1_CARROT_INITIAL_POS;
+		donkey.position = L1_DONKEY_INITIAL_POS;
+
 		// background
 		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
 		lawn.position = ccp(480.0f/2-7.0, 97);
@@ -127,7 +130,7 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:CARROT_INITIAL_POS]];
+			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:L1_CARROT_INITIAL_POS]];
 //			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
 			timeSinceAction=0.0f;
 		} else if (donkey.position.x > FALL_DOWN_POS) {
@@ -159,7 +162,7 @@
 			mode=ModeReturning;
 		}
 	} else if (mode==ModeReturning) {
-		if (donkey.position.x>DONKEY_INITIAL_POS_X) {
+		if (donkey.position.x>L1_DONKEY_INITIAL_POS_X) {
 			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
 			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
 			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;

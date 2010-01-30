@@ -9,8 +9,8 @@
 // HelloWorld implementation
 @implementation LevelTwo
 
-#define CARROT_INITIAL_POS ccp(400,260)
-#define DONKEY_INITIAL_POS ccp(40, 180)
+#define L2_CARROT_INITIAL_POS ccp(400,260)
+#define L2_DONKEY_INITIAL_POS ccp(40, 180)
 #define FISH_INITIAL_POS ccp(240, 80)
 #define FISH_MIN_X 105
 #define FISH_MAX_X 380
@@ -29,10 +29,9 @@
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
 		mode=ModeAlive;
-		
+
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
-		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
@@ -41,8 +40,11 @@
 		[carrot addAnimation:an];
 		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
-		donkey.position = DONKEY_INITIAL_POS;
+//		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
+		
+		carrot.position = L2_CARROT_INITIAL_POS;
+		donkey.position = L2_DONKEY_INITIAL_POS;
 		
 		// add fish
 		fish = [CCSprite spriteWithFile:@"fishclosed.png"];
@@ -154,8 +156,8 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:CARROT_INITIAL_POS]];
-			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
+			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:L2_CARROT_INITIAL_POS]];
+			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:L2_DONKEY_INITIAL_POS]];
 			timeSinceAction=0.0f;
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
