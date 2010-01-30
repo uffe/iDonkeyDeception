@@ -31,13 +31,12 @@
 		mode=ModeAlive;
 
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"Carrot_alt1.png"];
-//		carrot.position = CARROT_INITIAL_POS;
+		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"Carrot_alt1.png"];
-		[an addFrameWithFilename:@"Carrot_alt1_gone.png"];
+		[an addFrameWithFilename:@"Carrot_alt2.png"];
+		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
 		[carrot addAnimation:an];
 		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
@@ -120,6 +119,7 @@
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float fcDist = carrot.position.x - fish.position.x;
 	timeSinceAction += dt;
+	timeSinceFishFlipped += dt;
 	if (mode==ModeAlive) {	
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
 			mode = ModeFishEatingDonkey;
@@ -131,13 +131,21 @@
 		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
 			// move the fish
 			float moved;
-			if (fcDist > 0){
-				moved = FISH_VEL*dt;
-				fish.flipX = YES;
-			} else {
-				moved = -FISH_VEL*dt;
-				fish.flipX = NO;
-			} 
+			if (timeSinceFishFlipped > 1)
+			{
+				if (fcDist > 0){
+					moved = FISH_VEL*dt;
+					if (!fishFlipped)
+						timeSinceFishFlipped = 0;
+					fishFlipped = YES;
+				} else {
+					moved = -FISH_VEL*dt;
+					if (fishFlipped)
+						timeSinceFishFlipped = 0;
+					fishFlipped = NO;
+				} 				
+			}
+			fish.flipX = fishFlipped;
 			if (fish.position.x+moved > FISH_MIN_X && fish.position.x+moved < FISH_MAX_X) {
 				fish.position=ccp(fish.position.x+moved, fish.position.y);
 			}
