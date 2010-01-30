@@ -7,13 +7,15 @@
 enum  {
 	L2ModeAlive = 1,
 	L2ModeDead = 2,
-	L2ModeCarrotCaught = 3
+	L2ModeCarrotCaught = 3,
+	L2ModeFishEatingDonkey = 4
 } typedef LevelTwoMode;
 
 @interface LevelTwo : CCLayer
 {
 	CCSprite *carrot;
 	CCSprite *donkey;
+	CCSprite *fish;
 	LevelTwoMode mode;
 	NSDictionary *audioPlayerDict;
 	float timeSinceAction;

@@ -56,8 +56,8 @@
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"carrot.png"];
-		[an addFrameWithFilename:@"carrotgone.png"];
+		[an addFrameWithFilename:@"Carrot_alt1.png"];
+		[an addFrameWithFilename:@"Carrot_alt1_gone.png"];
 		[carrot addAnimation:an];
 		
 		// Add donkey and its animations
