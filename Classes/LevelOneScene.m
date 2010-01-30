@@ -32,13 +32,13 @@
 		mode=ModeAlive;
 		
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"carrot.png"];
+		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
 		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"Carrot_alt1.png"];
-		[an addFrameWithFilename:@"Carrot_alt1_gone.png"];
+		[an addFrameWithFilename:@"Carrot_alt2.png"];
+		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
 		[carrot addAnimation:an];
 		
 		// Add donkey and its animations
@@ -123,7 +123,7 @@
 	if (mode==ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
-			[[audioPlayerDict objectForKey:@"trombone"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
@@ -136,7 +136,8 @@
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
-			[[audioPlayerDict objectForKey:@"applause"] play];
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
+
 
 			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
 
