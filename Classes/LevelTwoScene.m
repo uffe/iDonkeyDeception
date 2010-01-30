@@ -132,12 +132,12 @@
 	#define FISH_EAT_DONKEY_DIST 50.0f
 	#define REVERT_TIME 1.0f
 	#define FISH_CARROT_REACT_DISTANCE 70.0f
-	#define FISH_VEL 50.0f
+	#define FISH_VEL 20.0f
 
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
-	float fcDist = fish.position.x+fish.contentSize.width/2 - carrot.position.x;
+	float fcDist = carrot.position.x - fish.position.x;
 	timeSinceAction += dt;
 	if (mode==L2ModeAlive) {	
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
@@ -151,13 +151,13 @@
 			// move the fish
 			float moved;
 			if (fcDist > 0)
-				moved = -FISH_VEL*dt;
-			else 
 				moved = FISH_VEL*dt;
+			else 
+				moved = -FISH_VEL*dt;
 
-//			if (fish.position.x+moved > FISH_MIN_X && fish.position.x+moved < FISH_MAX_X) {
+			if (fish.position.x+moved > FISH_MIN_X && fish.position.x+moved < FISH_MAX_X) {
 				fish.position=ccp(fish.position.x+moved, fish.position.y);
-//			}
+			}
 		}
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=L2ModeCarrotCaught;
