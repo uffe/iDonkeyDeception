@@ -31,13 +31,13 @@
 		mode=ModeAlive;
 		
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"Carrot_alt1.png"];
+		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
 		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"Carrot_alt1.png"];
-		[an addFrameWithFilename:@"Carrot_alt1_gone.png"];
+		[an addFrameWithFilename:@"Carrot_alt2.png"];
+		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
 		[carrot addAnimation:an];
 		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
