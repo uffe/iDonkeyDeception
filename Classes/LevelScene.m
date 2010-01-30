@@ -56,6 +56,13 @@
 	}
 	return self;
 }
+
+
+-(void) tick: (ccTime) dt {
+	dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
+	timeSinceAction += dt;
+}
+
 +(id) scene
 {
 	// 'scene' is an autorelease object.

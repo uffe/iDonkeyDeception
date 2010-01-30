@@ -9,10 +9,13 @@
 // HelloWorld implementation
 @implementation LevelTwo
 
-#define L2_CARROT_INITIAL_POS ccp(400,260)
-#define L2_DONKEY_INITIAL_POS ccp(40, 180)
+#define L2_CARROT_INITIAL_POS_X 200
+#define L2_CARROT_INITIAL_POS_Y 290
+
+#define L2_DONKEY_INITIAL_POS_X 40
+#define L2_DONKEY_INITIAL_POS ccp(L2_DONKEY_INITIAL_POS_X, 180)
 #define FISH_INITIAL_POS ccp(400, 30)
-#define FISH_SECOND_POS ccp(240, 80)
+#define FISH_SECOND_POS ccp(370, 80)
 #define FISH_MIN_X 115
 #define FISH_MAX_X 380
 // on "init" you need to initialize your instance
@@ -33,7 +36,9 @@
 
 		// add carrot
 		[self addChild:carrot];
-		carrot.position = L2_CARROT_INITIAL_POS;
+		carrot_initial_pos_x = L2_CARROT_INITIAL_POS_X;
+		carrot_initial_pos_y = L2_CARROT_INITIAL_POS_Y;
+		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
 		
 		// add donkey
 		[self addChild:donkey];
@@ -98,22 +103,14 @@
 }
 
 -(void) tick: (ccTime) dt {
-
-	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
-	#define DONKEY_VEL 5.0f
-	#define DONKEY_ACC 3.0;
-	#define FALL_DOWN_POS 345.0f
-	#define DONKEY_EAT_DIST 5.0f
+	[super tick:dt];
 	#define FISH_EAT_DONKEY_DIST 50.0f
-	#define REVERT_TIME 1.0f
-	#define DONKEY_MAX_X 130.0f
+	#define L2_DONKEY_MAX_X 120.0f
 	#define FISH_CARROT_REACT_DISTANCE 70.0f
-	#define FISH_VEL 20.0f
+	#define FISH_VEL 30.0f
 	
-	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float fcDist = carrot.position.x - fish.position.x;
-	timeSinceAction += dt;
 	timeSinceFishFlipped += dt;
 	if (mode==ModeAlive) {	
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
@@ -152,30 +149,38 @@
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
-			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:L2_CARROT_INITIAL_POS]];
-			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:L2_DONKEY_INITIAL_POS]];
+			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(carrot_initial_pos_x,carrot_initial_pos_y)]];
+//			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:L2_DONKEY_INITIAL_POS]];
 			timeSinceAction=0.0f;
-		} else if (donkey.position.x > FALL_DOWN_POS) {
-			// donkey fall down
-			
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
-			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
-			mode=ModeDead;
-			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
-			//NSLog(@"Ticked! %f", dt);
-			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
-			if (newPos.x < DONKEY_MAX_X)
+			if (newPos.x < L2_DONKEY_MAX_X) {
+				int donkey_walk_frame_index = newPos.x/DONKEY_FRAME_DX;
+				[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 				donkey.position=newPos;
+			}
+		} else {
+			[donkey setDisplayFrame:@"donkey_neutral" index:0];
 		}
 	} else if (mode==ModeCarrotCaught) {
-		if (timeSinceAction > REVERT_TIME) {
+		if (timeSinceAction < REVERT_TIME) {
+			int donkey_eat_index = timeSinceAction*1000/DONKEY_CHEW_DT;
+			[donkey setDisplayFrame:@"donkey_eat" index:donkey_eat_index%2];
+		} else {
+			mode=ModeReturning;
+		}
+	} else if (mode==ModeReturning) {
+		if (donkey.position.x>L2_DONKEY_INITIAL_POS_X) {
+			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
+			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
+			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			[donkey setDisplayFrame:@"donkey_neutral" index:donkey_walk_frame_index%4];
+		} else {
 			mode=ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
-	}	
+	}
 }
 
 
