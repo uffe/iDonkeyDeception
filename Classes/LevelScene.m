@@ -21,6 +21,7 @@
 		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
 							[Helper prepAudio:@"applause"],@"applause",
 							[Helper prepAudio:@"trombone"],@"trombone",
+							[Helper prepAudio:@"thebeech"],@"thebeech",
 							nil] retain];
 		
 //		// add carrot
