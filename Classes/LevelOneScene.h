@@ -7,7 +7,8 @@
 enum  {
 	ModeAlive = 1,
 	ModeDead = 2,
-	ModeCarrotCaught = 3
+	ModeCarrotCaught = 3,
+	ModeReturning = 4
 } typedef LevelOneMode;
 
 @interface LevelOne : CCLayer

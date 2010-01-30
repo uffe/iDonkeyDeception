@@ -213,6 +213,9 @@
 		AD09687C1114A364005822FB /* Donkey_stretch_left_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968761114A364005822FB /* Donkey_stretch_left_front.png */; };
 		AD09687D1114A364005822FB /* Donkey_stretch_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968771114A364005822FB /* Donkey_stretch_neutral.png */; };
 		AD09687E1114A364005822FB /* Donkey_stretch_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968781114A364005822FB /* Donkey_stretch_right_front.png */; };
+		AD0969321114C634005822FB /* Donkey_neutral_left_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09692F1114C634005822FB /* Donkey_neutral_left_front.png */; };
+		AD0969331114C634005822FB /* Donkey_neutral_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0969301114C634005822FB /* Donkey_neutral_neutral.png */; };
+		AD0969341114C634005822FB /* Donkey_neutral_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0969311114C634005822FB /* Donkey_neutral_right_front.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -441,6 +444,9 @@
 		AD0968761114A364005822FB /* Donkey_stretch_left_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_left_front.png; sourceTree = "<group>"; };
 		AD0968771114A364005822FB /* Donkey_stretch_neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_neutral.png; sourceTree = "<group>"; };
 		AD0968781114A364005822FB /* Donkey_stretch_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_right_front.png; sourceTree = "<group>"; };
+		AD09692F1114C634005822FB /* Donkey_neutral_left_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_left_front.png; sourceTree = "<group>"; };
+		AD0969301114C634005822FB /* Donkey_neutral_neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_neutral.png; sourceTree = "<group>"; };
+		AD0969311114C634005822FB /* Donkey_neutral_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_right_front.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -832,6 +838,9 @@
 			isa = PBXGroup;
 			children = (
 				AD0968731114A364005822FB /* Donkey_eating_state1.png */,
+				AD09692F1114C634005822FB /* Donkey_neutral_left_front.png */,
+				AD0969301114C634005822FB /* Donkey_neutral_neutral.png */,
+				AD0969311114C634005822FB /* Donkey_neutral_right_front.png */,
 				AD0968741114A364005822FB /* Donkey_eating_state2.png */,
 				AD0968751114A364005822FB /* Donkey_neutral.png */,
 				AD0968761114A364005822FB /* Donkey_stretch_left_front.png */,
@@ -1023,6 +1032,9 @@
 				9BEF420A1114AC83009FA185 /* carrotgone.png in Resources */,
 				9BEF420B1114AC83009FA185 /* DonkeySprite1.png in Resources */,
 				9BEF420C1114AC83009FA185 /* vand.png in Resources */,
+				AD0969321114C634005822FB /* Donkey_neutral_left_front.png in Resources */,
+				AD0969331114C634005822FB /* Donkey_neutral_neutral.png in Resources */,
+				AD0969341114C634005822FB /* Donkey_neutral_right_front.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,8 +26,9 @@
 	return scene;
 }
 
+#define DONKEY_INITIAL_POS_X 40
 #define CARROT_INITIAL_POS ccp(400,290)
-#define DONKEY_INITIAL_POS ccp(40, 190)
+#define DONKEY_INITIAL_POS ccp(DONKEY_INITIAL_POS_X, 190)
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -65,22 +66,25 @@
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
-		CCAnimation *donkey_walk_animation = [CCAnimation animationWithName:@"donkey_walk" delay:0];
-		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
-		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_left_front.png"];
-		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
-		[donkey_walk_animation addFrameWithFilename:@"Donkey_stretch_right_front.png"];
-		[donkey addAnimation:donkey_walk_animation];
 		donkey_walk_frame_index = 0;
+		CCAnimation *donkey_stretch_animation = [CCAnimation animationWithName:@"donkey_stretch" delay:0];
+		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
+		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_left_front.png"];
+		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
+		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_right_front.png"];
+		[donkey addAnimation:donkey_stretch_animation];
 
+		CCAnimation *donkey_neutral_animation = [CCAnimation animationWithName:@"donkey_neutral" delay:0];
+		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_neutral.png"];
+		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_left_front.png"];
+		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_neutral.png"];
+		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_right_front.png"];
+		[donkey addAnimation:donkey_neutral_animation];
+		
 		CCAnimation *donkey_eat_animation = [CCAnimation animationWithName:@"donkey_eat" delay:0];
 		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state1.png"];
 		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state2.png"];
 		[donkey addAnimation:donkey_eat_animation];
-		
-		CCAnimation *donkey_neutral_animation = [CCAnimation animationWithName:@"donkey_neutral" delay:0];
-		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral.png"];
-		[donkey addAnimation:donkey_neutral_animation];
 		
 		// background
 		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
@@ -128,6 +132,8 @@
 	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
 	#define DONKEY_VEL 5.0f
 	#define DONKEY_ACC 3.0f
+	#define DONKEY_CHEW_DT 150.0f	// milliseconds between chew animation frame updates
+	#define DONKEY_FRAME_DX 8		// pixels between walk animation frame updates
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
 	#define REVERT_TIME 1.0f
@@ -143,7 +149,7 @@
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
 			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:CARROT_INITIAL_POS]];
-			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
+//			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:DONKEY_INITIAL_POS]];
 			timeSinceAction=0.0f;
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
@@ -159,18 +165,30 @@
 			//NSLog(@"Ticked! %f", dt);
 			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
-			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
-			donkey_walk_frame_index = donkey.position.x/10;
-			[donkey setDisplayFrame:@"donkey_walk" index:donkey_walk_frame_index%4];
+			donkey.position=ccp((donkey.position.x+moved), donkey.position.y);
+			donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 		} else {
 			[donkey setDisplayFrame:@"donkey_neutral" index:0];
 		}
 	} else if (mode==ModeCarrotCaught) {
-		if (timeSinceAction > REVERT_TIME) {
+		if (timeSinceAction < REVERT_TIME) {
+			int donkey_eat_index = timeSinceAction*1000/DONKEY_CHEW_DT;
+			[donkey setDisplayFrame:@"donkey_eat" index:donkey_eat_index%2];
+		} else {
+			mode=ModeReturning;
+		}
+	} else if (mode==ModeReturning) {
+		if (donkey.position.x>DONKEY_INITIAL_POS_X) {
+			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
+			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
+			donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			[donkey setDisplayFrame:@"donkey_neutral" index:donkey_walk_frame_index%4];
+		} else {
 			mode=ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
-	}	
+	}
 }
 
 
