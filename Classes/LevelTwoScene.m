@@ -47,7 +47,7 @@
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
-		mode=ModeAlive;
+		mode=L2ModeAlive;
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"carrot.png"];
@@ -72,7 +72,7 @@
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (mode!=ModeAlive)
+	if (mode!=L2ModeAlive)
 		return kEventHandled;
 	UITouch *touch = [touches anyObject];
 	if (touch) {
@@ -111,9 +111,9 @@
 	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	timeSinceAction += dt;
-	if (mode==ModeAlive) {	
+	if (mode==L2ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
-			mode=ModeCarrotCaught;
+			mode=L2ModeCarrotCaught;
 			[[audioPlayerDict objectForKey:@"trombone"] play];
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
@@ -126,7 +126,7 @@
 			
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
-			mode=ModeDead;
+			mode=L2ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
@@ -134,9 +134,9 @@
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
 		}
-	} else if (mode==ModeCarrotCaught) {
+	} else if (mode==L2ModeCarrotCaught) {
 		if (timeSinceAction > REVERT_TIME) {
-			mode=ModeAlive;
+			mode=L2ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
 	}	

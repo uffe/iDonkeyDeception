@@ -5,9 +5,9 @@
 // HelloWorld Layer
 
 enum  {
-	ModeAlive = 1,
-	ModeDead = 2,
-	ModeCarrotCaught = 3
+	L2ModeAlive = 1,
+	L2ModeDead = 2,
+	L2ModeCarrotCaught = 3
 } typedef LevelTwoMode;
 
 @interface LevelTwo : CCLayer

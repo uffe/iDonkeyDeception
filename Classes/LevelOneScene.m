@@ -6,6 +6,7 @@
 // Import the interfaces
 #import "LevelOneScene.h"
 #import "Helper.h"
+#import "LevelTwoScene.h"
 
 // HelloWorld implementation
 @implementation LevelOne
@@ -99,11 +100,15 @@
 	
 }
 
+-(void) levelCompleted{
+	[[CCDirector sharedDirector] pushScene: [CCSlideInRTransition transitionWithDuration:1 scene:[LevelTwo scene]]];	
+}
+
 -(void) tick: (ccTime) dt {
 
 	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
 	#define DONKEY_VEL 5.0f
-	#define DONKEY_ACC 3.0;
+	#define DONKEY_ACC 3.0f
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
 	#define REVERT_TIME 1.0f
@@ -128,6 +133,9 @@
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
+
+			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
+
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
 			// move the donkey
