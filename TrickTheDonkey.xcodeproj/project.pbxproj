@@ -205,6 +205,12 @@
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
 		A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */; };
 		A2597DD011145689001BBEB9 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2597DCF11145689001BBEB9 /* Helper.m */; };
+		AD0968791114A364005822FB /* Donkey_eating_state1.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968731114A364005822FB /* Donkey_eating_state1.png */; };
+		AD09687A1114A364005822FB /* Donkey_eating_state2.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968741114A364005822FB /* Donkey_eating_state2.png */; };
+		AD09687B1114A364005822FB /* Donkey_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968751114A364005822FB /* Donkey_neutral.png */; };
+		AD09687C1114A364005822FB /* Donkey_stretch_left_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968761114A364005822FB /* Donkey_stretch_left_front.png */; };
+		AD09687D1114A364005822FB /* Donkey_stretch_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968771114A364005822FB /* Donkey_stretch_neutral.png */; };
+		AD09687E1114A364005822FB /* Donkey_stretch_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0968781114A364005822FB /* Donkey_stretch_right_front.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -425,6 +431,12 @@
 		A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwoScene.m; sourceTree = "<group>"; };
 		A2597DCE11145689001BBEB9 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		A2597DCF11145689001BBEB9 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
+		AD0968731114A364005822FB /* Donkey_eating_state1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_eating_state1.png; sourceTree = "<group>"; };
+		AD0968741114A364005822FB /* Donkey_eating_state2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_eating_state2.png; sourceTree = "<group>"; };
+		AD0968751114A364005822FB /* Donkey_neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral.png; sourceTree = "<group>"; };
+		AD0968761114A364005822FB /* Donkey_stretch_left_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_left_front.png; sourceTree = "<group>"; };
+		AD0968771114A364005822FB /* Donkey_stretch_neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_neutral.png; sourceTree = "<group>"; };
+		AD0968781114A364005822FB /* Donkey_stretch_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_stretch_right_front.png; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -796,6 +808,7 @@
 		9B22543511143AD200E4361C /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				AD0968671114A340005822FB /* Donkey */,
 				9BEF3EA3111450C4009FA185 /* carrot.png */,
 				9BEF3FE6111475E6009FA185 /* carrotgone.png */,
 				9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */,
@@ -807,6 +820,19 @@
 				9BEF402F111483E1009FA185 /* grassandfence.png */,
 			);
 			name = Sprites;
+			sourceTree = "<group>";
+		};
+		AD0968671114A340005822FB /* Donkey */ = {
+			isa = PBXGroup;
+			children = (
+				AD0968731114A364005822FB /* Donkey_eating_state1.png */,
+				AD0968741114A364005822FB /* Donkey_eating_state2.png */,
+				AD0968751114A364005822FB /* Donkey_neutral.png */,
+				AD0968761114A364005822FB /* Donkey_stretch_left_front.png */,
+				AD0968771114A364005822FB /* Donkey_stretch_neutral.png */,
+				AD0968781114A364005822FB /* Donkey_stretch_right_front.png */,
+			);
+			name = Donkey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -983,6 +1009,12 @@
 				9BEF4033111483E1009FA185 /* Carrot_alt1.png in Resources */,
 				9BEF4034111483E1009FA185 /* fish.png in Resources */,
 				9BEF4035111483E1009FA185 /* grassandfence.png in Resources */,
+				AD0968791114A364005822FB /* Donkey_eating_state1.png in Resources */,
+				AD09687A1114A364005822FB /* Donkey_eating_state2.png in Resources */,
+				AD09687B1114A364005822FB /* Donkey_neutral.png in Resources */,
+				AD09687C1114A364005822FB /* Donkey_stretch_left_front.png in Resources */,
+				AD09687D1114A364005822FB /* Donkey_stretch_neutral.png in Resources */,
+				AD09687E1114A364005822FB /* Donkey_stretch_right_front.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1162,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Bjerregaard Nielsen";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1144,6 +1177,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TrickTheDonkey;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37AC5B98-1C65-4DF9-9E60-5335FF375569";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;
