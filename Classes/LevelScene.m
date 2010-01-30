@@ -7,6 +7,8 @@
 //
 
 #import "LevelScene.h"
+#import "Helper.h"
+
 
 
 @implementation LevelScene

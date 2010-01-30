@@ -5,7 +5,6 @@
 
 // Import the interfaces
 #import "LevelTwoScene.h"
-#import "Helper.h"
 
 // HelloWorld implementation
 @implementation LevelTwo
