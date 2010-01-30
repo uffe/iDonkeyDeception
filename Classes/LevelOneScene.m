@@ -11,20 +11,6 @@
 // HelloWorld implementation
 @implementation LevelOne
 
-+(id) scene
-{
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	LevelOne *layer = [LevelOne node];
-	
-	// add layer as a child to scene
-	[scene addChild: layer];
-	
-	// return the scene
-	return scene;
-}
 
 #define DONKEY_INITIAL_POS_X 40
 #define CARROT_INITIAL_POS ccp(400,290)
@@ -66,7 +52,6 @@
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
-		donkey_walk_frame_index = 0;
 		CCAnimation *donkey_stretch_animation = [CCAnimation animationWithName:@"donkey_stretch" delay:0];
 		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
 		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_left_front.png"];
@@ -166,7 +151,7 @@
 			// move the donkey
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp((donkey.position.x+moved), donkey.position.y);
-			donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
 			[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 		} else {
 			[donkey setDisplayFrame:@"donkey_neutral" index:0];
@@ -182,7 +167,7 @@
 		if (donkey.position.x>DONKEY_INITIAL_POS_X) {
 			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
 			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
-			donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
 			[donkey setDisplayFrame:@"donkey_neutral" index:donkey_walk_frame_index%4];
 		} else {
 			mode=ModeAlive;

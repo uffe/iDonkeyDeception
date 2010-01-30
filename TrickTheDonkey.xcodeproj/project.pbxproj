@@ -215,6 +215,7 @@
 		AD09698E1114CB16005822FB /* Donkey_neutral_left_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698B1114CB16005822FB /* Donkey_neutral_left_front.png */; };
 		AD09698F1114CB16005822FB /* Donkey_neutral_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698C1114CB16005822FB /* Donkey_neutral_neutral.png */; };
 		AD0969901114CB16005822FB /* Donkey_neutral_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */; };
+		AD0969971114CC13005822FB /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0969961114CC13005822FB /* LevelScene.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -445,6 +446,8 @@
 		AD09698B1114CB16005822FB /* Donkey_neutral_left_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_left_front.png; sourceTree = "<group>"; };
 		AD09698C1114CB16005822FB /* Donkey_neutral_neutral.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_neutral.png; sourceTree = "<group>"; };
 		AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_right_front.png; sourceTree = "<group>"; };
+		AD0969951114CC13005822FB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
+		AD0969961114CC13005822FB /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -544,6 +547,8 @@
 			children = (
 				A2597DCE11145689001BBEB9 /* Helper.h */,
 				A2597DCF11145689001BBEB9 /* Helper.m */,
+				AD0969951114CC13005822FB /* LevelScene.h */,
+				AD0969961114CC13005822FB /* LevelScene.m */,
 				506EDC2F102F528A00A389B3 /* LevelOneScene.h */,
 				506EDC30102F528A00A389B3 /* LevelOneScene.m */,
 				A23FFFEE11148EE500E39E37 /* LevelTwoScene.h */,
@@ -1046,6 +1051,7 @@
 				506EDC31102F528A00A389B3 /* LevelOneScene.m in Sources */,
 				A2597DD011145689001BBEB9 /* Helper.m in Sources */,
 				A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */,
+				AD0969971114CC13005822FB /* LevelScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

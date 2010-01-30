@@ -10,21 +10,6 @@
 // HelloWorld implementation
 @implementation LevelTwo
 
-+(id) scene
-{
-	// 'scene' is an autorelease object.
-	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
-	LevelTwo *layer = [LevelTwo node];
-	
-	// add layer as a child to scene
-	[scene addChild: layer];
-	
-	// return the scene
-	return scene;
-}
-
 #define CARROT_INITIAL_POS ccp(400,260)
 #define DONKEY_INITIAL_POS ccp(40, 180)
 #define FISH_INITIAL_POS ccp(240, 80)
@@ -50,7 +35,7 @@
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
-		mode=L2ModeAlive;
+		mode=ModeAlive;
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"Carrot_alt1.png"];
@@ -95,7 +80,7 @@
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (mode!=L2ModeAlive)
+	if (mode!=ModeAlive)
 		return kEventHandled;
 	UITouch *touch = [touches anyObject];
 	if (touch) {
@@ -139,9 +124,9 @@
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float fcDist = fish.position.x+fish.contentSize.width/2 - carrot.position.x;
 	timeSinceAction += dt;
-	if (mode==L2ModeAlive) {	
+	if (mode==ModeAlive) {	
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
-			mode = L2ModeFishEatingDonkey;
+			mode = ModeFishEatingDonkey;
 			[fish setDisplayFrame:@"fish" index:1];
 			[fish runAction:[CCRotateTo actionWithDuration:1.0f angle:-91.0]];
 			[fish runAction:[CCJumpTo actionWithDuration:1.0f position:donkey.position height:150 jumps:1]];
@@ -160,7 +145,7 @@
 //			}
 		}
 		if (dcDist < DONKEY_EAT_DIST) {
-			mode=L2ModeCarrotCaught;
+			mode=ModeCarrotCaught;
 			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			
 			[carrot setDisplayFrame:@"carrot" index:1];
@@ -173,7 +158,7 @@
 			
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
-			mode=L2ModeDead;
+			mode=ModeDead;
 			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
@@ -183,9 +168,9 @@
 			if (newPos.x < DONKEY_MAX_X)
 				donkey.position=newPos;
 		}
-	} else if (mode==L2ModeCarrotCaught) {
+	} else if (mode==ModeCarrotCaught) {
 		if (timeSinceAction > REVERT_TIME) {
-			mode=L2ModeAlive;
+			mode=ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
 	}	
