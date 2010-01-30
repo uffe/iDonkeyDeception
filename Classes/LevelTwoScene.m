@@ -11,8 +11,9 @@
 
 #define L2_CARROT_INITIAL_POS ccp(400,260)
 #define L2_DONKEY_INITIAL_POS ccp(40, 180)
-#define FISH_INITIAL_POS ccp(240, 80)
-#define FISH_MIN_X 105
+#define FISH_INITIAL_POS ccp(400, 30)
+#define FISH_SECOND_POS ccp(240, 80)
+#define FISH_MIN_X 115
 #define FISH_MAX_X 380
 // on "init" you need to initialize your instance
 -(id) init
@@ -31,20 +32,13 @@
 		mode=ModeAlive;
 
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
 		[self addChild:carrot];
-		
-		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"Carrot_alt2.png"];
-		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
-		[carrot addAnimation:an];
-		
-		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
-//		donkey.position = DONKEY_INITIAL_POS;
-		[self addChild:donkey];
-		
 		carrot.position = L2_CARROT_INITIAL_POS;
+		
+		// add donkey
+		[self addChild:donkey];
 		donkey.position = L2_DONKEY_INITIAL_POS;
+		
 		
 		// add fish
 		fish = [CCSprite spriteWithFile:@"fishclosed.png"];
@@ -52,6 +46,8 @@
 		fish.scaleY = 0.5f;
 		fish.position = FISH_INITIAL_POS;
 		[self addChild:fish];
+		[fish runAction:[CCMoveTo actionWithDuration:5 position:FISH_SECOND_POS]];
+		timeSinceFishFlipped = -5;
 		
 		CCAnimation *fan = [CCAnimation animationWithName:@"fish" delay:0];
 		[fan addFrameWithFilename:@"fishclosed.png"];

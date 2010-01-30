@@ -32,40 +32,11 @@
 		mode=ModeAlive;
 		
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"Carrot_alt2.png"];
 		[self addChild:carrot];
-		
-		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"Carrot_alt2.png"];
-		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
-		[carrot addAnimation:an];
-		
-		// Add donkey and its animations
-		donkey = [CCSprite spriteWithFile:@"Donkey_neutral.png"];
-//		donkey.position = DONKEY_INITIAL_POS;
-		[self addChild:donkey];
-		
-		CCAnimation *donkey_stretch_animation = [CCAnimation animationWithName:@"donkey_stretch" delay:0];
-		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
-		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_left_front.png"];
-		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_neutral.png"];
-		[donkey_stretch_animation addFrameWithFilename:@"Donkey_stretch_right_front.png"];
-		[donkey addAnimation:donkey_stretch_animation];
-
-		CCAnimation *donkey_neutral_animation = [CCAnimation animationWithName:@"donkey_neutral" delay:0];
-		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_neutral.png"];
-		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_left_front.png"];
-		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_neutral.png"];
-		[donkey_neutral_animation addFrameWithFilename:@"Donkey_neutral_right_front.png"];
-		[donkey addAnimation:donkey_neutral_animation];
-		
-		CCAnimation *donkey_eat_animation = [CCAnimation animationWithName:@"donkey_eat" delay:0];
-		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state1.png"];
-		[donkey_eat_animation addFrameWithFilename:@"Donkey_eating_state2.png"];
-		[donkey addAnimation:donkey_eat_animation];
-		
-
 		carrot.position = L1_CARROT_INITIAL_POS;
+		
+		// add donkey
+		[self addChild:donkey];
 		donkey.position = L1_DONKEY_INITIAL_POS;
 
 		// background
