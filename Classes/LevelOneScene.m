@@ -4,11 +4,11 @@
 //
 
 // Import the interfaces
-#import "HelloWorldScene.h"
+#import "LevelOneScene.h"
 #import "Helper.h"
 
 // HelloWorld implementation
-@implementation HelloWorld
+@implementation LevelOne
 
 +(id) scene
 {
@@ -16,7 +16,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorld *layer = [HelloWorld node];
+	LevelOne *layer = [LevelOne node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];

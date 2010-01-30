@@ -8,7 +8,7 @@
 
 #import "TrickTheDonkeyAppDelegate.h"
 #import "cocos2d.h"
-#import "HelloWorldScene.h"
+#import "LevelOneScene.h"
 
 @implementation TrickTheDonkeyAppDelegate
 
@@ -51,7 +51,7 @@
 	[window makeKeyAndVisible];		
 		
 		
-	[[CCDirector sharedDirector] runWithScene: [HelloWorld scene]];
+	[[CCDirector sharedDirector] runWithScene: [LevelOne scene]];
 }
 
 

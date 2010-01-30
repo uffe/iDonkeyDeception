@@ -10,7 +10,7 @@ enum  {
 	ModeCarrotCaught = 3
 } typedef GameMode;
 
-@interface HelloWorld : CCLayer
+@interface LevelOne : CCLayer
 {
 	CCSprite *carrot;
 	CCSprite *donkey;
