@@ -127,6 +127,7 @@
 			[fish runAction:[CCRotateTo actionWithDuration:1.0f angle:-91.0]];
 			[fish runAction:[CCJumpTo actionWithDuration:1.0f position:donkey.position height:150 jumps:1]];
 			[fish runAction:[CCScaleBy actionWithDuration:1.0f scale:1.5f]];
+			fish.flipX = NO;
 		}
 		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
 			// move the fish
