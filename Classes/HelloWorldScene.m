@@ -5,6 +5,7 @@
 
 // Import the interfaces
 #import "HelloWorldScene.h"
+#import "Helper.h"
 
 // HelloWorld implementation
 @implementation HelloWorld
@@ -30,6 +31,11 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
+		
+		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
+						   [Helper prepAudio:@"4 Applause"],@"applause",
+						   [Helper prepAudio:@"11 Trombone Long"],@"trombone",
+							nil] retain];
 		
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		
@@ -113,6 +119,7 @@
 		if (mode==ModeAlive) {
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
 			mode=ModeDead;
+			[[audioPlayerDict objectForKey:@"applause"] play];
 		}
 		
 	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
@@ -136,5 +143,6 @@
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];
+	[audioPlayerDict release];
 }
 @end
