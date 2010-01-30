@@ -8,13 +8,13 @@ enum  {
 	ModeAlive = 1,
 	ModeDead = 2,
 	ModeCarrotCaught = 3
-} typedef LevelOneMode;
+} typedef LevelTwoMode;
 
-@interface LevelOne : CCLayer
+@interface LevelTwo : CCLayer
 {
 	CCSprite *carrot;
 	CCSprite *donkey;
-	LevelOneMode mode;
+	LevelTwoMode mode;
 	NSDictionary *audioPlayerDict;
 	float timeSinceAction;
 }

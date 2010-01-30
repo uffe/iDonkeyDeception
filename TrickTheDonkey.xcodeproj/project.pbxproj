@@ -203,6 +203,7 @@
 		9BEF4035111483E1009FA185 /* grassandfence.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402F111483E1009FA185 /* grassandfence.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
+		A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */; };
 		A2597DD011145689001BBEB9 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2597DCF11145689001BBEB9 /* Helper.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
@@ -420,6 +421,8 @@
 		9BEF402F111483E1009FA185 /* grassandfence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassandfence.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
+		A23FFFEE11148EE500E39E37 /* LevelTwoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwoScene.h; sourceTree = "<group>"; };
+		A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwoScene.m; sourceTree = "<group>"; };
 		A2597DCE11145689001BBEB9 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		A2597DCF11145689001BBEB9 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -523,6 +526,8 @@
 				A2597DCF11145689001BBEB9 /* Helper.m */,
 				506EDC2F102F528A00A389B3 /* LevelOneScene.h */,
 				506EDC30102F528A00A389B3 /* LevelOneScene.m */,
+				A23FFFEE11148EE500E39E37 /* LevelTwoScene.h */,
+				A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */,
 				1F3B9A2C0EF2145700286867 /* TrickTheDonkeyAppDelegate.h */,
 				1F3B9A2B0EF2145700286867 /* TrickTheDonkeyAppDelegate.m */,
 			);
@@ -992,6 +997,7 @@
 				1F3B9A2D0EF2145700286867 /* TrickTheDonkeyAppDelegate.m in Sources */,
 				506EDC31102F528A00A389B3 /* LevelOneScene.m in Sources */,
 				A2597DD011145689001BBEB9 /* Helper.m in Sources */,
+				A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
