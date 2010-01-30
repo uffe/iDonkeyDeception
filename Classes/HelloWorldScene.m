@@ -52,6 +52,11 @@
 		carrot.position = ccp(200,260);
 		[self addChild:carrot];
 		
+		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
+		[an addFrameWithFilename:@"carrot.png"];
+		[an addFrameWithFilename:@"carrotgone.png"];
+		[carrot addAnimation:an];
+		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
 		donkey.position = ccp(40, 180);
 		[self addChild:donkey];
@@ -115,6 +120,8 @@
 		if (mode==ModeAlive) {
 			mode=ModeCarrotCaught;
 			[[audioPlayerDict objectForKey:@"trombone"] play];
+			[carrot setDisplayFrame:@"carrot" index:1];
+
 		}
 	} else if (donkey.position.x > FALL_DOWN_POS) {
 		// donkey fall down

@@ -196,6 +196,7 @@
 		9BEF3EA7111450C4009FA185 /* carrot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA3111450C4009FA185 /* carrot.png */; };
 		9BEF3EA8111450C4009FA185 /* DonkeySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */; };
 		9BEF3EA9111450C4009FA185 /* grasandfence.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA5111450C4009FA185 /* grasandfence.png */; };
+		9BEF3FA7111469DD009FA185 /* carrotgone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3FA6111469DD009FA185 /* carrotgone.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
 		A2597DD011145689001BBEB9 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2597DCF11145689001BBEB9 /* Helper.m */; };
@@ -217,6 +218,18 @@
 			remoteInfo = "cocos2d libraries";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9BEF3FBB11146A63009FA185 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* TrickTheDonkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrickTheDonkey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -408,6 +421,7 @@
 		9BEF3EA3111450C4009FA185 /* carrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrot.png; sourceTree = "<group>"; };
 		9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DonkeySprite1.png; sourceTree = "<group>"; };
 		9BEF3EA5111450C4009FA185 /* grasandfence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grasandfence.png; sourceTree = "<group>"; };
+		9BEF3FA6111469DD009FA185 /* carrotgone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrotgone.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
 		A2597DCE11145689001BBEB9 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -788,6 +802,7 @@
 		9BEF3EA1111450C4009FA185 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				9BEF3FA6111469DD009FA185 /* carrotgone.png */,
 				9BEF3EA2111450C4009FA185 /* background.png */,
 				9BEF3EA3111450C4009FA185 /* carrot.png */,
 				9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */,
@@ -906,6 +921,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				9BEF3FBB11146A63009FA185 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -965,6 +981,7 @@
 				9BEF3EA9111450C4009FA185 /* grasandfence.png in Resources */,
 				A218F7E711145DB0001FA031 /* applause.caf in Resources */,
 				A218F7E811145DB0001FA031 /* trombone.caf in Resources */,
+				9BEF3FA7111469DD009FA185 /* carrotgone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
