@@ -62,6 +62,9 @@
 		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
 		foreground.position = ccp(300, 110);
 		[self addChild:foreground];
+
+		// play beach song
+		[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"thebeech"] withObject:nil];
 	}
 	return self;
 }
