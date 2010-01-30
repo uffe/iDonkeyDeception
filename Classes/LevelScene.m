@@ -10,7 +10,20 @@
 
 
 @implementation LevelScene
-
+// on "init" you need to initialize your instance
+-(id) init
+{
+	// always call "super" init
+	// Apple recommends to re-assign "self" with the "super" return value
+	if( (self=[super init] )) {
+		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
+							[Helper prepAudio:@"applause"],@"applause",
+							[Helper prepAudio:@"trombone"],@"trombone",
+							nil] retain];
+		
+	}
+	return self;
+}
 +(id) scene
 {
 	// 'scene' is an autorelease object.

@@ -22,14 +22,8 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
 		
-		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
-							[Helper prepAudio:@"applause"],@"applause",
-							[Helper prepAudio:@"trombone"],@"trombone",
-							nil] retain];
-		
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		
 		// addbackground
+		CGSize size = [[CCDirector sharedDirector] winSize];
 		CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
