@@ -111,8 +111,9 @@
 }
 
 -(void) tick: (ccTime) dt {
-	#define DONKEY_CARROT_REACT_DISTANCE 50.0f
-	#define DONKEY_VEL 40.0f
+	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+	#define DONKEY_VEL 5.0f
+	#define DONKEY_ACC 2.0;
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
 	
@@ -128,8 +129,7 @@
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
 			[carrot runAction:[CCMoveTo actionWithDuration:1.0f position:CARROT_INITIAL_POS]];
-			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:DONKEY_INITIAL_POS]];
-			//			[donkey runAction:[CCRotateTo actionWithDuration:1.0f angle:-471.0]];
+			[donkey runAction:[CCRotateTo actionWithDuration:1.0f angle:90.0]];
 			//TODO: when action done, set mode to alive
 		} else if (donkey.position.x > FALL_DOWN_POS) {
 			// donkey fall down
@@ -141,7 +141,7 @@
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			//NSLog(@"Ticked! %f", dt);
 			// move the donkey
-			float moved = DONKEY_VEL*dt;
+			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			donkey.position=ccp(donkey.position.x+moved, donkey.position.y);
 		}
 	}	
