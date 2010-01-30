@@ -104,7 +104,7 @@
 }
 
 -(void) tick: (ccTime) dt {
-	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
+	#define DONKEY_CARROT_REACT_DISTANCE 50.0f
 	#define DONKEY_VEL 40.0f
 	#define FALL_DOWN_POS 345.0f
 	#define DONKEY_EAT_DIST 5.0f
@@ -118,6 +118,7 @@
 		// donkey fall down
 		if (mode==ModeAlive) {
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
+			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
 		}
