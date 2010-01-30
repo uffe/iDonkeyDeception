@@ -42,7 +42,7 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		
 		// addbackground
-		CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+		CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
@@ -50,22 +50,29 @@
 		mode=L2ModeAlive;
 		
 		// add carrot
-		carrot = [CCSprite spriteWithFile:@"carrot.png"];
+		carrot = [CCSprite spriteWithFile:@"Carrot_alt1.png"];
 		carrot.position = CARROT_INITIAL_POS;
 		[self addChild:carrot];
 		
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
-		[an addFrameWithFilename:@"carrot.png"];
-		[an addFrameWithFilename:@"carrotgone.png"];
+		[an addFrameWithFilename:@"Carrot_alt1.png"];
+		[an addFrameWithFilename:@"Carrot_alt1_gone.png"];
 		[carrot addAnimation:an];
 		
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
 		donkey.position = DONKEY_INITIAL_POS;
 		[self addChild:donkey];
 		
-		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
-		lawn.position = ccp(480.0f/2-7.0, 97);
-		[self addChild:lawn];
+		CCSprite *water = [CCSprite spriteWithFile:@"vand.png"];
+		water.position = ccp(480.0f/2+230, 10);
+		[self addChild:water];
+		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(20,20) duration:200000]];
+		
+		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
+		foreground.position = ccp(70, 120);
+		[self addChild:foreground];
+		
+
 		
 		}
 	return self;
