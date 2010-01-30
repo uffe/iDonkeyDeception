@@ -101,15 +101,21 @@
 	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
 	#define DONKEY_VEL 40.0f
 	#define FALL_DOWN_POS 345.0f
+	#define DONKEY_EAT_DIST 5.0f
+	
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
-	if (donkey.position.x > FALL_DOWN_POS) {
+	
+	if (dcDist < DONKEY_EAT_DIST) {
+		
+		
+	} else if (donkey.position.x > FALL_DOWN_POS) {
 		// donkey fall down
 		if (mode==ModeAlive) {
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(380,10)]];
 			mode=ModeDead;
 		}
 		
-	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > 0) {
+	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 		//NSLog(@"Ticked! %f", dt);
 		// move the donkey
 		float moved = DONKEY_VEL*dt;
