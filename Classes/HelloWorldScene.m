@@ -49,6 +49,10 @@
 		donkey = [CCSprite spriteWithFile:@"DonkeySprite1.png"];
 		donkey.position = ccp(40, 180);
 		[self addChild:donkey];
+		
+		CCSprite *lawn = [CCSprite spriteWithFile:@"grasandfence.png"];
+		lawn.position = ccp(480.0f/2, 150);
+		[self addChild:lawn];
 
 		
 		
@@ -95,7 +99,7 @@
 
 -(void) tick: (ccTime) dt {
 	#define DONKEY_CARROT_REACT_DISTANCE 70.0f
-	#define DONKEY_VEL 30.0f
+	#define DONKEY_VEL 40.0f
 	#define FALL_DOWN_POS 345.0f
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	if (donkey.position.x > FALL_DOWN_POS) {

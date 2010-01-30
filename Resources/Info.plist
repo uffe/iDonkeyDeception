@@ -21,6 +21,8 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIStatusBarHidden</key>
-	<false/>
+	<true/>
+	<key>UIInterfaceOrientation</key>
+	<string>UIInterfaceOrientationLandscapeRight</string>
 </dict>
 </plist>
