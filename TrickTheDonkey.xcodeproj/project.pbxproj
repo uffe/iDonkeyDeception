@@ -196,9 +196,9 @@
 		9BEF3EA7111450C4009FA185 /* carrot.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA3111450C4009FA185 /* carrot.png */; };
 		9BEF3EA8111450C4009FA185 /* DonkeySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */; };
 		9BEF3EA9111450C4009FA185 /* grasandfence.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF3EA5111450C4009FA185 /* grasandfence.png */; };
+		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
+		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
 		A2597DD011145689001BBEB9 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A2597DCF11145689001BBEB9 /* Helper.m */; };
-		A2597DD311145709001BBEB9 /* 4 Applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2597DD111145709001BBEB9 /* 4 Applause.wav */; };
-		A2597DD411145709001BBEB9 /* 11 Trombone Long.wav in Resources */ = {isa = PBXBuildFile; fileRef = A2597DD211145709001BBEB9 /* 11 Trombone Long.wav */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -408,10 +408,10 @@
 		9BEF3EA3111450C4009FA185 /* carrot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carrot.png; sourceTree = "<group>"; };
 		9BEF3EA4111450C4009FA185 /* DonkeySprite1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DonkeySprite1.png; sourceTree = "<group>"; };
 		9BEF3EA5111450C4009FA185 /* grasandfence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grasandfence.png; sourceTree = "<group>"; };
+		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
+		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
 		A2597DCE11145689001BBEB9 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		A2597DCF11145689001BBEB9 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
-		A2597DD111145709001BBEB9 /* 4 Applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "4 Applause.wav"; sourceTree = "<group>"; };
-		A2597DD211145709001BBEB9 /* 11 Trombone Long.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "11 Trombone Long.wav"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -768,8 +768,8 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A2597DD111145709001BBEB9 /* 4 Applause.wav */,
-				A2597DD211145709001BBEB9 /* 11 Trombone Long.wav */,
+				A218F7E511145DB0001FA031 /* applause.caf */,
+				A218F7E611145DB0001FA031 /* trombone.caf */,
 				50F414ED1069373D002A0D5E /* fps_images.png */,
 				50F414EE1069373D002A0D5E /* Icon.png */,
 				50F414EF1069373D002A0D5E /* Info.plist */,
@@ -963,8 +963,8 @@
 				9BEF3EA7111450C4009FA185 /* carrot.png in Resources */,
 				9BEF3EA8111450C4009FA185 /* DonkeySprite1.png in Resources */,
 				9BEF3EA9111450C4009FA185 /* grasandfence.png in Resources */,
-				A2597DD311145709001BBEB9 /* 4 Applause.wav in Resources */,
-				A2597DD411145709001BBEB9 /* 11 Trombone Long.wav in Resources */,
+				A218F7E711145DB0001FA031 /* applause.caf in Resources */,
+				A218F7E811145DB0001FA031 /* trombone.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

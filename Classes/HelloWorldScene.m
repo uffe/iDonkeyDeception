@@ -33,8 +33,8 @@
 	if( (self=[super init] )) {
 		
 		audioPlayerDict = [[NSDictionary dictionaryWithObjectsAndKeys:
-						   [Helper prepAudio:@"4 Applause"],@"applause",
-						   [Helper prepAudio:@"11 Trombone Long"],@"trombone",
+						   [Helper prepAudio:@"applause"],@"applause",
+						   [Helper prepAudio:@"trombone"],@"trombone",
 							nil] retain];
 		
 		CGSize size = [[CCDirector sharedDirector] winSize];
@@ -112,8 +112,10 @@
 	float dcDist = carrot.position.x - donkey.position.x-donkey.contentSize.width/2;
 	
 	if (dcDist < DONKEY_EAT_DIST) {
-		
-		
+		if (mode==ModeAlive) {
+			mode=ModeCarrotCaught;
+			[[audioPlayerDict objectForKey:@"trombone"] play];
+		}
 	} else if (donkey.position.x > FALL_DOWN_POS) {
 		// donkey fall down
 		if (mode==ModeAlive) {
@@ -121,8 +123,7 @@
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
 			mode=ModeDead;
 			[[audioPlayerDict objectForKey:@"applause"] play];
-		}
-		
+		}		
 	} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 		//NSLog(@"Ticked! %f", dt);
 		// move the donkey

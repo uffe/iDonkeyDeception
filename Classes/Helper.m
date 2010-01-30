@@ -15,7 +15,7 @@
 	AVAudioPlayer *theMessageAudioPlayer = nil;
 	@try {
 		NSString *audioFilePath = [[NSBundle mainBundle] pathForResource:audioFileName
-																  ofType: @"wav"];
+																  ofType: @"caf"];
 		
 		if (! audioFilePath)
 			[NSException raise:@"No audio path" format:@"No path to audio file"];
