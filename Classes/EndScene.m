@@ -4,21 +4,18 @@
 //
 
 // Import the interfaces
-#import "LevelTwoScene.h"
-#import "LevelThreeScene.h"
+#import "EndScene.h"
 
 // HelloWorld implementation
-@implementation LevelTwo
+@implementation EndScene
 
-#define L2_CARROT_INITIAL_POS_X 200
-#define L2_CARROT_INITIAL_POS_Y 290
 
-#define L2_DONKEY_INITIAL_POS_X 40
-#define L2_DONKEY_INITIAL_POS ccp(L2_DONKEY_INITIAL_POS_X, 180)
-#define FISH_INITIAL_POS ccp(400, 30)
-#define FISH_SECOND_POS ccp(370, 80)
-#define FISH_MIN_X 115
-#define FISH_MAX_X 380
+#define L1_CARROT_INITIAL_POS_X 263
+#define L1_CARROT_INITIAL_POS_Y 290
+
+#define L1_DONKEY_INITIAL_POS_X 40
+#define L1_DONKEY_INITIAL_POS ccp(L1_DONKEY_INITIAL_POS_X, 190)
+#define L1_DONKEY_MAX_X 1000
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -28,49 +25,27 @@
 		
 		// addbackground
 		CGSize size = [[CCDirector sharedDirector] winSize];
-		CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
-		background.position = ccp( size.width /2, size.height/2 );
+		CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
 		mode=ModeAlive;
-
+		
 		// add carrot
 		[self addChild:carrot];
-		carrot_initial_pos_x = L2_CARROT_INITIAL_POS_X;
-		carrot_initial_pos_y = L2_CARROT_INITIAL_POS_Y;
+		carrot_initial_pos_x = L1_CARROT_INITIAL_POS_X;
+		carrot_initial_pos_y = L1_CARROT_INITIAL_POS_Y;
 		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
 		
 		// add donkey
 		[self addChild:donkey];
-		donkey.position = L2_DONKEY_INITIAL_POS;
+		donkey.position = L1_DONKEY_INITIAL_POS;
 		
-		// add fish
-		fish = [CCSprite spriteWithFile:@"fishclosed.png"];
-		fish.scaleX = 0.5f;
-		fish.scaleY = 0.5f;
-		fish.position = FISH_INITIAL_POS;
-		[self addChild:fish];
-		[fish runAction:[CCMoveTo actionWithDuration:5 position:FISH_SECOND_POS]];
-		timeSinceFishFlipped = -5;
-		
-		CCAnimation *fan = [CCAnimation animationWithName:@"fish" delay:0];
-		[fan addFrameWithFilename:@"fishclosed.png"];
-		[fan addFrameWithFilename:@"fish.png"];
-		[fish addAnimation:fan];
-
-		CCSprite *water = [CCSprite spriteWithFile:@"vand.png"];
-		water.position = ccp(480.0f/2+130, 140);
-
-		[self addChild:water];
-		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(10,10) duration:200000]];
-		
-		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
-		foreground.position = ccp(275, 125);
-		[self addChild:foreground];
-
-		// play beach song
-		[[audioPlayerDict objectForKey:@"thebeech"] play];
+		// background
+		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
+		lawn.position = ccp(480.0f/2-7.0, 97);
+		[self addChild:lawn];
 		
 	}
 	return self;
@@ -101,52 +76,22 @@
 	
 	// we ignore the event. Other receivers will receive this event.
 	return kEventHandled;
+	
 }
+
+
+-(void)playSpike {
+	NSLog(@"playSpike");
+	//TODO
+	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
+}
+
 
 -(void) tick: (ccTime) dt {
 	[super tick:dt];
-	#define FISH_EAT_DONKEY_DIST 50.0f
-	#define L2_DONKEY_MAX_X 120.0f
-	#define FISH_CARROT_REACT_DISTANCE 70.0f
-	#define FISH_VEL 30.0f
+#define FALL_DOWN_POS 345.0f
 	
-	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
-	float fcDist = carrot.position.x - fish.position.x;
-	timeSinceFishFlipped += dt;
 	if (mode==ModeAlive) {	
-		if (dfDist < FISH_EAT_DONKEY_DIST) {
-			mode = ModeFishEatingDonkey;
-			[fish setDisplayFrame:@"fish" index:1];
-			fish.flipX = NO;
-			[fish runAction:[CCRotateTo actionWithDuration:1.0f angle:-91.0]];
-			[fish runAction:[CCJumpTo actionWithDuration:1.0f position:donkey.position height:150 jumps:1]];
-			[fish runAction:[CCScaleBy actionWithDuration:1.0f scale:1.5f]];
-			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:3.0f];
-			[self performSelector:@selector(playKnifeSound) withObject:nil afterDelay:0.9f];
-
-		}
-		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
-			// move the fish
-			float moved;
-			if (timeSinceFishFlipped > 1)
-			{
-				if (fcDist > 0){
-					moved = FISH_VEL*dt;
-					if (!fishFlipped)
-						timeSinceFishFlipped = 0;
-					fishFlipped = YES;
-				} else {
-					moved = -FISH_VEL*dt;
-					if (fishFlipped)
-						timeSinceFishFlipped = 0;
-					fishFlipped = NO;
-				} 				
-			}
-			fish.flipX = fishFlipped;
-			if (fish.position.x+moved > FISH_MIN_X && fish.position.x+moved < FISH_MAX_X) {
-				fish.position=ccp(fish.position.x+moved, fish.position.y);
-			}
-		}
 		if (dcDist < DONKEY_EAT_DIST) {
 			mode=ModeCarrotCaught;
 			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
@@ -154,16 +99,32 @@
 			[carrot setDisplayFrame:@"carrot" index:1];
 			
 			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(carrot_initial_pos_x,carrot_initial_pos_y)]];
-//			[donkey runAction:[CCMoveTo actionWithDuration:REVERT_TIME position:L2_DONKEY_INITIAL_POS]];
 			timeSinceAction=0.0f;
+		} else if (donkey.position.x > FALL_DOWN_POS) {
+			// donkey fall down
+			
+			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
+			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
+			mode=ModeDead;
+			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
+			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
+			[self performSelector:@selector(playSpike) withObject:nil afterDelay:0.8];
+			//			[NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(playSpike) userInfo:nil repeats:NO];
+			
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
-			if (newPos.x < L2_DONKEY_MAX_X) {
+			if (newPos.x < L1_DONKEY_MAX_X) {
 				int donkey_walk_frame_index = newPos.x/DONKEY_FRAME_DX;
 				[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 				donkey.position=newPos;
 			}
+			//NSLog(@"Ticked! %f", dt);
+			// move the donkey
+			//			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
+			//			donkey.position=ccp((donkey.position.x+moved), donkey.position.y);
+			//			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
+			//			[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 		} else {
 			[donkey setDisplayFrame:@"donkey_neutral" index:0];
 		}
@@ -175,7 +136,7 @@
 			mode=ModeReturning;
 		}
 	} else if (mode==ModeReturning) {
-		if (donkey.position.x>L2_DONKEY_INITIAL_POS_X) {
+		if (donkey.position.x>L1_DONKEY_INITIAL_POS_X) {
 			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
 			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
 			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
@@ -187,10 +148,6 @@
 	}
 }
 
--(void) levelCompleted{
-	[[audioPlayerDict objectForKey:@"thebeech"] stop];
-	[[CCDirector sharedDirector] pushScene: [CCSlideInRTransition transitionWithDuration:1 scene:[LevelThree scene]]];	
-}
 
 
 // on "dealloc" you need to release all your retained objects
