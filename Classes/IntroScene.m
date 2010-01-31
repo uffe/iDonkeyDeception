@@ -11,16 +11,23 @@
 // HelloWorld implementation
 @implementation IntroScene
 
+- (void)setLastFrame{
+	[devil setDisplayFrame:@"devil" index:22];
+	CCSprite *rope_extension = [CCSprite spriteWithFile:@"rope.png"];
+	rope_extension.position = ccp(265,17);
+	[self addChild:rope_extension];
+}
+
+- (void)levelCompleted{
+	[[CCDirector sharedDirector] pushScene: [CCSlideInBTransition transitionWithDuration:1 scene:[LevelOne scene]]];	
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
-		timeSinceAction=0.0f;
-		[self schedule: @selector(tick:)];
-
-
 		// addbackground
 		CGSize size = [[CCDirector sharedDirector] winSize];		
 		CCSprite *background = [CCSprite spriteWithFile:@"background_prequel.png"];
@@ -56,6 +63,13 @@
 		[da addFrameWithFilename:@"End.png"];
 		[devil addAnimation:da];
 		
+		id actionDelay = [CCDelayTime actionWithDuration:2];
+		id actionAnim = [CCAnimate actionWithAnimation:da];
+		id actionCallFunc = [CCCallFunc actionWithTarget:self selector:@selector(levelCompleted)];
+		id actionLastFrame = [CCCallFunc actionWithTarget:self selector:@selector(setLastFrame)];
+		id actionSequence = [CCSequence actions: actionDelay, actionAnim, actionLastFrame, actionDelay, actionCallFunc, nil];
+		[devil runAction:actionSequence];
+		
 		[self addChild:devil];
 
 		}
@@ -76,22 +90,6 @@
 	// return the scene
 	return scene;
 }
-
-#define DEVIL_ANIM_DT 0.3f	// milliseconds between chew animation frame updates
--(void) tick: (ccTime) dt {
-	timeSinceAction += dt;
-	
-	if (timeSinceAction > DEVIL_ANIM_DT) {
-		timeSinceAction = 0.0f;
-		devil_anim_index++;
-		[devil setDisplayFrame:@"devil" index:devil_anim_index];
-
-		if (devil_anim_index == 22) {
-			[[CCDirector sharedDirector] pushScene: [CCSlideInBTransition transitionWithDuration:1 scene:[LevelOne scene]]];	
-		}
-	}
-}
-
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
