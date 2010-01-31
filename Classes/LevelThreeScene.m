@@ -6,7 +6,7 @@
 // Import the interfaces
 #import "LevelThreeScene.h"
 //#import "Helper.h"
-#import "LevelTwoScene.h"
+#import "EndScene.h"
 
 // HelloWorld implementation
 @implementation LevelThree
@@ -92,7 +92,7 @@
 }
 
 -(void) levelCompleted{
-	[[CCDirector sharedDirector] pushScene: [CCSlideInRTransition transitionWithDuration:1 scene:[LevelTwo scene]]];	
+	[[CCDirector sharedDirector] pushScene: [CCSlideInTTransition transitionWithDuration:1 scene:[EndScene scene]]];	
 }
 
 -(void)playSpike {

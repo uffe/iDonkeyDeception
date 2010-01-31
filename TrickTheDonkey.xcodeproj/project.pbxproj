@@ -206,6 +206,7 @@
 		9BEF464211159A8F009FA185 /* endbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF464111159A8F009FA185 /* endbackground.png */; };
 		9BEF464611159AD2009FA185 /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF464511159AD2009FA185 /* EndScene.m */; };
 		9BEF464C11159B2D009FA185 /* ttd_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF464B11159B2D009FA185 /* ttd_icon1.png */; };
+		9BEF46A411159D00009FA185 /* ttd_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF46A311159D00009FA185 /* ttd_icon2.png */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -474,6 +475,7 @@
 		9BEF464411159AD2009FA185 /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndScene.h; sourceTree = "<group>"; };
 		9BEF464511159AD2009FA185 /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndScene.m; sourceTree = "<group>"; };
 		9BEF464B11159B2D009FA185 /* ttd_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ttd_icon1.png; sourceTree = "<group>"; };
+		9BEF46A311159D00009FA185 /* ttd_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ttd_icon2.png; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -892,6 +894,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9BEF46A311159D00009FA185 /* ttd_icon2.png */,
 				9BEF464B11159B2D009FA185 /* ttd_icon1.png */,
 				9BEF441211157E7F009FA185 /* knife_hit1.caf */,
 				9BEF43C01114E207009FA185 /* fishappear.caf */,
@@ -1195,6 +1198,7 @@
 				A29E3D8C111597AF007E35D1 /* Start.png in Resources */,
 				9BEF464211159A8F009FA185 /* endbackground.png in Resources */,
 				9BEF464C11159B2D009FA185 /* ttd_icon1.png in Resources */,
+				9BEF46A411159D00009FA185 /* ttd_icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

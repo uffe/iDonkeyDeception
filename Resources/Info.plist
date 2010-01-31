@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>ttd_icon1.png</string>
+	<string>ttd_icon2.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.olegammelgaard.donkey</string>
 	<key>CFBundleInfoDictionaryVersion</key>

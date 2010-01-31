@@ -10,9 +10,6 @@
 @implementation EndScene
 
 
-#define L1_CARROT_INITIAL_POS_X 263
-#define L1_CARROT_INITIAL_POS_Y 290
-
 #define L1_DONKEY_INITIAL_POS_X 40
 #define L1_DONKEY_INITIAL_POS ccp(L1_DONKEY_INITIAL_POS_X, 190)
 #define L1_DONKEY_MAX_X 1000
@@ -25,27 +22,19 @@
 		
 		// addbackground
 		CGSize size = [[CCDirector sharedDirector] winSize];
-		CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+		CCSprite *background = [CCSprite spriteWithFile:@"endbackground.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
 		mode=ModeAlive;
 		
-		// add carrot
-		[self addChild:carrot];
-		carrot_initial_pos_x = L1_CARROT_INITIAL_POS_X;
-		carrot_initial_pos_y = L1_CARROT_INITIAL_POS_Y;
-		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
+
 		
 		// add donkey
 		[self addChild:donkey];
 		donkey.position = L1_DONKEY_INITIAL_POS;
-		
-		// background
-		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
-		lawn.position = ccp(480.0f/2-7.0, 97);
-		[self addChild:lawn];
+
 		
 	}
 	return self;
