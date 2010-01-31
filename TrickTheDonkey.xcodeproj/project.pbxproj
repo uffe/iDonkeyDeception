@@ -196,7 +196,6 @@
 		9BEF4031111483E1009FA185 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402B111483E1009FA185 /* background2.png */; };
 		9BEF4034111483E1009FA185 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402E111483E1009FA185 /* fish.png */; };
 		9BEF4035111483E1009FA185 /* grassandfence.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF402F111483E1009FA185 /* grassandfence.png */; };
-		9BEF42081114AC83009FA185 /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42031114AC83009FA185 /* bane-2-forgrund.png */; };
 		9BEF420B1114AC83009FA185 /* DonkeySprite1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42061114AC83009FA185 /* DonkeySprite1.png */; };
 		9BEF420C1114AC83009FA185 /* vand.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42071114AC83009FA185 /* vand.png */; };
 		9BEF43C21114E207009FA185 /* fishappear.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C01114E207009FA185 /* fishappear.caf */; };
@@ -218,6 +217,8 @@
 		AD09698F1114CB16005822FB /* Donkey_neutral_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698C1114CB16005822FB /* Donkey_neutral_neutral.png */; };
 		AD0969901114CB16005822FB /* Donkey_neutral_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */; };
 		AD0969971114CC13005822FB /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0969961114CC13005822FB /* LevelScene.m */; };
+		AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9147011114FAE500BFF57C /* bane-2-forgrund.png */; };
+		AD914772111503BC00BFF57C /* knife_hit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AD914771111503BC00BFF57C /* knife_hit1.wav */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -427,7 +428,6 @@
 		9BEF402B111483E1009FA185 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
 		9BEF402E111483E1009FA185 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		9BEF402F111483E1009FA185 /* grassandfence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grassandfence.png; sourceTree = "<group>"; };
-		9BEF42031114AC83009FA185 /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
 		9BEF42061114AC83009FA185 /* DonkeySprite1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DonkeySprite1.png; sourceTree = "<group>"; };
 		9BEF42071114AC83009FA185 /* vand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vand.png; sourceTree = "<group>"; };
 		9BEF43C01114E207009FA185 /* fishappear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fishappear.caf; sourceTree = SOURCE_ROOT; };
@@ -452,6 +452,8 @@
 		AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_right_front.png; sourceTree = "<group>"; };
 		AD0969951114CC13005822FB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		AD0969961114CC13005822FB /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
+		AD9147011114FAE500BFF57C /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
+		AD914771111503BC00BFF57C /* knife_hit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = knife_hit1.wav; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -812,6 +814,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AD914771111503BC00BFF57C /* knife_hit1.wav */,
 				9BEF43C01114E207009FA185 /* fishappear.caf */,
 				9BEF43C11114E207009FA185 /* thebeech.caf */,
 				A218F7E511145DB0001FA031 /* applause.caf */,
@@ -827,7 +830,7 @@
 		9B22543511143AD200E4361C /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				9BEF42031114AC83009FA185 /* bane-2-forgrund.png */,
+				AD9147011114FAE500BFF57C /* bane-2-forgrund.png */,
 				9BEF42061114AC83009FA185 /* DonkeySprite1.png */,
 				9BEF42071114AC83009FA185 /* vand.png */,
 				AD0968671114A340005822FB /* Donkey */,
@@ -1033,7 +1036,6 @@
 				AD09687C1114A364005822FB /* Donkey_stretch_left_front.png in Resources */,
 				AD09687D1114A364005822FB /* Donkey_stretch_neutral.png in Resources */,
 				AD09687E1114A364005822FB /* Donkey_stretch_right_front.png in Resources */,
-				9BEF42081114AC83009FA185 /* bane-2-forgrund.png in Resources */,
 				9BEF420B1114AC83009FA185 /* DonkeySprite1.png in Resources */,
 				9BEF420C1114AC83009FA185 /* vand.png in Resources */,
 				A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */,
@@ -1044,6 +1046,8 @@
 				A2FF41CA1114DB5C00C112CB /* Carrot_alt2_gone.png in Resources */,
 				9BEF43C21114E207009FA185 /* fishappear.caf in Resources */,
 				9BEF43C31114E207009FA185 /* thebeech.caf in Resources */,
+				AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */,
+				AD914772111503BC00BFF57C /* knife_hit1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

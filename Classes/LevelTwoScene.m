@@ -28,7 +28,7 @@
 		// addbackground
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		CCSprite *background = [CCSprite spriteWithFile:@"background2.png"];
-		background.position = ccp( size.width /2 , size.height/2 );
+		background.position = ccp( size.width /2, size.height/2 );
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
 		[self schedule: @selector(tick:)];
@@ -65,7 +65,7 @@
 		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(10,10) duration:200000]];
 		
 		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
-		foreground.position = ccp(300, 110);
+		foreground.position = ccp(275, 110);
 		[self addChild:foreground];
 
 		// play beach song

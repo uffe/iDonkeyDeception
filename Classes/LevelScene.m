@@ -22,6 +22,7 @@
 							[Helper prepAudio:@"applause"],@"applause",
 							[Helper prepAudio:@"trombone"],@"trombone",
 							[Helper prepAudio:@"thebeech"],@"thebeech",
+//							[Helper prepAudio:@"knife_hit"],@"knife",
 							nil] retain];
 		
 		// Create carrot and its animations

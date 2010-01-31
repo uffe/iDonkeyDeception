@@ -85,6 +85,13 @@
 	[[CCDirector sharedDirector] pushScene: [CCSlideInRTransition transitionWithDuration:1 scene:[LevelTwo scene]]];	
 }
 
+-(void)playSpike {
+	NSLog(@"playSpike");
+	//TODO
+//	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
+}
+
+
 -(void) tick: (ccTime) dt {
 	[super tick:dt];
 	#define FALL_DOWN_POS 345.0f
@@ -106,6 +113,8 @@
 			mode=ModeDead;
 			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
 			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
+			[self performSelector:@selector(playSpike) withObject:nil afterDelay:0.8];
+//			[NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(playSpike) userInfo:nil repeats:NO];
 
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
@@ -143,7 +152,6 @@
 		}
 	}
 }
-
 
 
 
