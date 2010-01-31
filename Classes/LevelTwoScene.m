@@ -117,10 +117,10 @@
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
 			mode = ModeFishEatingDonkey;
 			[fish setDisplayFrame:@"fish" index:1];
+			fish.flipX = NO;
 			[fish runAction:[CCRotateTo actionWithDuration:1.0f angle:-91.0]];
 			[fish runAction:[CCJumpTo actionWithDuration:1.0f position:donkey.position height:150 jumps:1]];
 			[fish runAction:[CCScaleBy actionWithDuration:1.0f scale:1.5f]];
-			fish.flipX = NO;
 			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:3.0f];
 			[self performSelector:@selector(playKnifeSound) withObject:nil afterDelay:0.9f];
 
