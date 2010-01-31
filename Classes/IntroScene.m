@@ -47,6 +47,10 @@
 		[da addFrameWithFilename:@"06_laugh.png"];
 		[da addFrameWithFilename:@"07_laugh.png"];
 		[da addFrameWithFilename:@"08_laugh.png"];
+		[da addFrameWithFilename:@"05_laugh.png"];
+		[da addFrameWithFilename:@"06_laugh.png"];
+		[da addFrameWithFilename:@"07_laugh.png"];
+		[da addFrameWithFilename:@"08_laugh.png"];
 		[da addFrameWithFilename:@"09_movement.png"];
 		[da addFrameWithFilename:@"10_movement.png"];
 		[da addFrameWithFilename:@"11_pause.png"];
