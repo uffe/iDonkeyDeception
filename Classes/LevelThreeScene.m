@@ -18,9 +18,9 @@
 #define L3_DONKEY_INITIAL_POS_X 40
 #define L3_DONKEY_INITIAL_POS ccp(L3_DONKEY_INITIAL_POS_X, 190)
 #define L3_DONKEY_MAX_X 1000
-#define L3_BRIDGE_START_X 100
+#define L3_BRIDGE_START_X 90
 #define L3_BRIDGE_START_Y 145
-#define L3_BRIDGE_LENGTH 260
+#define L3_BRIDGE_LENGTH 310
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -103,9 +103,13 @@
 
 
 - (void)animateBridge:(ccTime)dt {
+//	int previous_y = L3_BRIDGE_START_Y;
+//	int next_y = L3_BRIDGE_START_Y;
 	for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
-//		bridgeTile[i].position.x = L3_BRIDGE_START_X;
-//		bridgeTile[i].position.y = L3_BRIDGE_START_Y;
+//		if ((L3_BRIDGE_TILE_COUNT-1)==i) {
+//		}
+		CGPoint newPos = ccp(bridgeTile[i].position.x, bridgeTile[i].position.y);
+		bridgeTile[i].position = newPos;
 	}
 //	donkey.position=newPos;
 	

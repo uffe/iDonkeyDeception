@@ -202,6 +202,7 @@
 		9BEF43C31114E207009FA185 /* thebeech.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C11114E207009FA185 /* thebeech.caf */; };
 		9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF441211157E7F009FA185 /* knife_hit1.caf */; };
 		9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF44801115842E009FA185 /* LevelThreeScene.m */; };
+		9BEF45A011158A45009FA185 /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF459F11158A45009FA185 /* entitlements.plist */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -219,9 +220,9 @@
 		AD09698F1114CB16005822FB /* Donkey_neutral_neutral.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698C1114CB16005822FB /* Donkey_neutral_neutral.png */; };
 		AD0969901114CB16005822FB /* Donkey_neutral_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */; };
 		AD0969971114CC13005822FB /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0969961114CC13005822FB /* LevelScene.m */; };
-		AD5700C21115897700AB6BCF /* background3.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5700C11115897700AB6BCF /* background3.png */; };
-		AD5700CC111589DB00AB6BCF /* foreground3.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5700CB111589DB00AB6BCF /* foreground3.png */; };
-		AD5700E511158DCB00AB6BCF /* bridgetile.png in Resources */ = {isa = PBXBuildFile; fileRef = AD5700E411158DCB00AB6BCF /* bridgetile.png */; };
+		AD570145111592CD00AB6BCF /* background3.png in Resources */ = {isa = PBXBuildFile; fileRef = AD570142111592CD00AB6BCF /* background3.png */; };
+		AD570146111592CD00AB6BCF /* bridgetile.png in Resources */ = {isa = PBXBuildFile; fileRef = AD570143111592CD00AB6BCF /* bridgetile.png */; };
+		AD570147111592CD00AB6BCF /* foreground3.png in Resources */ = {isa = PBXBuildFile; fileRef = AD570144111592CD00AB6BCF /* foreground3.png */; };
 		AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9147011114FAE500BFF57C /* bane-2-forgrund.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
@@ -439,6 +440,7 @@
 		9BEF441211157E7F009FA185 /* knife_hit1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knife_hit1.caf; sourceTree = "<group>"; };
 		9BEF447F1115842E009FA185 /* LevelThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThreeScene.h; sourceTree = "<group>"; };
 		9BEF44801115842E009FA185 /* LevelThreeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThreeScene.m; sourceTree = "<group>"; };
+		9BEF459F11158A45009FA185 /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -459,9 +461,9 @@
 		AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Donkey_neutral_right_front.png; sourceTree = "<group>"; };
 		AD0969951114CC13005822FB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		AD0969961114CC13005822FB /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
-		AD5700C11115897700AB6BCF /* background3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background3.png; sourceTree = "<group>"; };
-		AD5700CB111589DB00AB6BCF /* foreground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foreground3.png; sourceTree = "<group>"; };
-		AD5700E411158DCB00AB6BCF /* bridgetile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bridgetile.png; sourceTree = "<group>"; };
+		AD570142111592CD00AB6BCF /* background3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background3.png; sourceTree = "<group>"; };
+		AD570143111592CD00AB6BCF /* bridgetile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bridgetile.png; sourceTree = "<group>"; };
+		AD570144111592CD00AB6BCF /* foreground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foreground3.png; sourceTree = "<group>"; };
 		AD9147011114FAE500BFF57C /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -537,6 +539,7 @@
 			children = (
 				1F3B9A820EF2151B00286867 /* TrickTheDonkey_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				9BEF459F11158A45009FA185 /* entitlements.plist */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -568,10 +571,10 @@
 				506EDC30102F528A00A389B3 /* LevelOneScene.m */,
 				A23FFFEE11148EE500E39E37 /* LevelTwoScene.h */,
 				A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */,
-				9BEF447F1115842E009FA185 /* LevelThreeScene.h */,
-				9BEF44801115842E009FA185 /* LevelThreeScene.m */,
 				1F3B9A2C0EF2145700286867 /* TrickTheDonkeyAppDelegate.h */,
 				1F3B9A2B0EF2145700286867 /* TrickTheDonkeyAppDelegate.m */,
+				9BEF447F1115842E009FA185 /* LevelThreeScene.h */,
+				9BEF44801115842E009FA185 /* LevelThreeScene.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -841,20 +844,20 @@
 		9B22543511143AD200E4361C /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				AD570143111592CD00AB6BCF /* bridgetile.png */,
 				AD9147011114FAE500BFF57C /* bane-2-forgrund.png */,
 				9BEF42061114AC83009FA185 /* DonkeySprite1.png */,
 				9BEF42071114AC83009FA185 /* vand.png */,
 				AD0968671114A340005822FB /* Donkey */,
 				9BEF402A111483E1009FA185 /* background.png */,
 				9BEF402B111483E1009FA185 /* background2.png */,
-				AD5700C11115897700AB6BCF /* background3.png */,
-				AD5700E411158DCB00AB6BCF /* bridgetile.png */,
+				AD570142111592CD00AB6BCF /* background3.png */,
+				AD570144111592CD00AB6BCF /* foreground3.png */,
 				A2FF41C71114DB5C00C112CB /* Carrot_alt2.png */,
 				A2FF41C81114DB5C00C112CB /* Carrot_alt2_gone.png */,
 				9BEF402E111483E1009FA185 /* fish.png */,
 				A20940F31114BCFB0028AC3B /* fishclosed.png */,
 				9BEF402F111483E1009FA185 /* grassandfence.png */,
-				AD5700CB111589DB00AB6BCF /* foreground3.png */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -1062,9 +1065,10 @@
 				9BEF43C31114E207009FA185 /* thebeech.caf in Resources */,
 				AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */,
 				9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */,
-				AD5700C21115897700AB6BCF /* background3.png in Resources */,
-				AD5700CC111589DB00AB6BCF /* foreground3.png in Resources */,
-				AD5700E511158DCB00AB6BCF /* bridgetile.png in Resources */,
+				9BEF45A011158A45009FA185 /* entitlements.plist in Resources */,
+				AD570145111592CD00AB6BCF /* background3.png in Resources */,
+				AD570146111592CD00AB6BCF /* bridgetile.png in Resources */,
+				AD570147111592CD00AB6BCF /* foreground3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,7 +1218,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Bjerregaard Nielsen";
+				CODE_SIGN_ENTITLEMENTS = entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1229,7 +1235,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TrickTheDonkey;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37AC5B98-1C65-4DF9-9E60-5335FF375569";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;

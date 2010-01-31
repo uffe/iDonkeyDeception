@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LevelScene.h"
 
-#define L3_BRIDGE_TILE_COUNT 10
+#define L3_BRIDGE_TILE_COUNT 12
 
 @interface LevelThree : LevelScene {
 	CCSprite *bridgeTile[L3_BRIDGE_TILE_COUNT];
