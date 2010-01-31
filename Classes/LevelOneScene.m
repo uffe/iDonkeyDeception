@@ -88,7 +88,7 @@
 -(void)playSpike {
 	NSLog(@"playSpike");
 	//TODO
-//	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
+	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
 }
 
 

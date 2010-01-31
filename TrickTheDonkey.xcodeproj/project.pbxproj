@@ -200,6 +200,7 @@
 		9BEF420C1114AC83009FA185 /* vand.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF42071114AC83009FA185 /* vand.png */; };
 		9BEF43C21114E207009FA185 /* fishappear.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C01114E207009FA185 /* fishappear.caf */; };
 		9BEF43C31114E207009FA185 /* thebeech.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C11114E207009FA185 /* thebeech.caf */; };
+		9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF441211157E7F009FA185 /* knife_hit1.caf */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -218,7 +219,6 @@
 		AD0969901114CB16005822FB /* Donkey_neutral_right_front.png in Resources */ = {isa = PBXBuildFile; fileRef = AD09698D1114CB16005822FB /* Donkey_neutral_right_front.png */; };
 		AD0969971114CC13005822FB /* LevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0969961114CC13005822FB /* LevelScene.m */; };
 		AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9147011114FAE500BFF57C /* bane-2-forgrund.png */; };
-		AD914772111503BC00BFF57C /* knife_hit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = AD914771111503BC00BFF57C /* knife_hit1.wav */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -432,6 +432,7 @@
 		9BEF42071114AC83009FA185 /* vand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vand.png; sourceTree = "<group>"; };
 		9BEF43C01114E207009FA185 /* fishappear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fishappear.caf; sourceTree = SOURCE_ROOT; };
 		9BEF43C11114E207009FA185 /* thebeech.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebeech.caf; sourceTree = SOURCE_ROOT; };
+		9BEF441211157E7F009FA185 /* knife_hit1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knife_hit1.caf; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -453,7 +454,6 @@
 		AD0969951114CC13005822FB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 		AD0969961114CC13005822FB /* LevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelScene.m; sourceTree = "<group>"; };
 		AD9147011114FAE500BFF57C /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
-		AD914771111503BC00BFF57C /* knife_hit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = knife_hit1.wav; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -814,7 +814,7 @@
 		50F414EB1069373D002A0D5E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AD914771111503BC00BFF57C /* knife_hit1.wav */,
+				9BEF441211157E7F009FA185 /* knife_hit1.caf */,
 				9BEF43C01114E207009FA185 /* fishappear.caf */,
 				9BEF43C11114E207009FA185 /* thebeech.caf */,
 				A218F7E511145DB0001FA031 /* applause.caf */,
@@ -1047,7 +1047,7 @@
 				9BEF43C21114E207009FA185 /* fishappear.caf in Resources */,
 				9BEF43C31114E207009FA185 /* thebeech.caf in Resources */,
 				AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */,
-				AD914772111503BC00BFF57C /* knife_hit1.wav in Resources */,
+				9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

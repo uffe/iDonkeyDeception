@@ -69,7 +69,8 @@
 		[self addChild:foreground];
 
 		// play beach song
-		[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"thebeech"] withObject:nil];
+		[[audioPlayerDict objectForKey:@"thebeech"] play];
+		
 	}
 	return self;
 }
