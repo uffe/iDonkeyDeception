@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>ttd_icon1.png</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.olegammelgaard.donkey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -24,5 +24,7 @@
 	<true/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeRight</string>
+	<key>UIPrerenderedIcon</key>
+	<string>YES</string>
 </dict>
 </plist>

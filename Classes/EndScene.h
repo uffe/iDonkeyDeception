@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LevelScene.h"
 
-
-@interface EndScene : NSObject {
+@interface EndScene : LevelScene {
 
 }
 
