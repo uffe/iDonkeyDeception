@@ -16,11 +16,13 @@
 #define L3_CARROT_INITIAL_POS_Y 290
 
 #define L3_DONKEY_INITIAL_POS_X 40
-#define L3_DONKEY_INITIAL_POS ccp(L3_DONKEY_INITIAL_POS_X, 190)
+#define L3_DONKEY_INITIAL_POS_Y 190
+#define L3_DONKEY_INITIAL_POS ccp(L3_DONKEY_INITIAL_POS_X, L3_DONKEY_INITIAL_POS_Y)
 #define L3_DONKEY_MAX_X 1000
 #define L3_BRIDGE_START_X 90
-#define L3_BRIDGE_START_Y 145
+#define L3_BRIDGE_START_Y 155
 #define L3_BRIDGE_LENGTH 310
+#define L3_DONKEY_BRIDGE_OFFSET (40)
 
 // on "init" you need to initialize your instance
 -(id) init
@@ -48,16 +50,19 @@
 		[self addChild:donkey];
 		donkey.position = L3_DONKEY_INITIAL_POS;
 				
-		for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
-			bridgeTile[i] = [CCSprite spriteWithFile:@"bridgetile.png"];
-			bridgeTile[i].position = ccp(L3_BRIDGE_START_X+i*L3_BRIDGE_LENGTH/L3_BRIDGE_TILE_COUNT,L3_BRIDGE_START_Y);
-			[self addChild:bridgeTile[i]];
-		}
 
 		// foreground
 		CCSprite *lawn = [CCSprite spriteWithFile:@"foreground3.png"];
 		lawn.position = ccp(480.0f/2-7.0, 125);
 		[self addChild:lawn];
+
+		// add bridge tiles
+		for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
+			bridgeTile[i] = [CCSprite spriteWithFile:@"bridgetile.png"];
+			bridgeTile[i].position = ccp(L3_BRIDGE_START_X+i*L3_BRIDGE_LENGTH/L3_BRIDGE_TILE_COUNT,L3_BRIDGE_START_Y);
+			tile_y0[i] = L3_BRIDGE_START_Y;
+			[self addChild:bridgeTile[i]];
+		}
 		
 	}
 	return self;
@@ -103,16 +108,59 @@
 
 
 - (void)animateBridge:(ccTime)dt {
-//	int previous_y = L3_BRIDGE_START_Y;
-//	int next_y = L3_BRIDGE_START_Y;
-	for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
-//		if ((L3_BRIDGE_TILE_COUNT-1)==i) {
-//		}
-		CGPoint newPos = ccp(bridgeTile[i].position.x, bridgeTile[i].position.y);
-		bridgeTile[i].position = newPos;
-	}
-//	donkey.position=newPos;
+	float previous_tile_y = L3_BRIDGE_START_Y;
+	float next_tile_y = L3_BRIDGE_START_Y;
+	float new_y;
+//	bridgeTile[5].position = ccp(bridgeTile[5].position.x, L3_BRIDGE_START_Y-20);
+	float gravity_acc = 0.3f;
+	float tile_chain_pull = 0.7f;
 	
+	// Momentum (and gravity and drag)
+	for (int i=1;i<L3_BRIDGE_TILE_COUNT-1;i++) {
+		new_y = tile_y0[i] + (bridgeTile[i].position.y - tile_y0[i])*0.5f - gravity_acc;
+		bridgeTile[i].position = ccp(bridgeTile[i].position.x,new_y);
+		tile_y0[i] = bridgeTile[i].position.y;
+	}
+	
+	// Move tiles according to neighbor tiles
+	for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
+			if ((L3_BRIDGE_TILE_COUNT-1)==i) {
+				next_tile_y = L3_BRIDGE_START_Y;
+			} else {
+				next_tile_y = bridgeTile[i+1].position.y;
+			}
+			float dist_y = (bridgeTile[i].position.y - previous_tile_y) + (bridgeTile[i].position.y - next_tile_y);
+//			if (dist_y>5) {
+				new_y = bridgeTile[i].position.y - tile_chain_pull*(dist_y);
+//			} else {
+//				new_y = bridgeTile[i].position.y - tile_chain_pull*(dist_y-10);
+//			}
+			previous_tile_y = bridgeTile[i].position.y; // remember this for next tile..
+			CGPoint newPos = ccp(bridgeTile[i].position.x, new_y);
+			bridgeTile[i].position = newPos;
+	}
+/**/
+	CCSprite *myDonkey = donkey;
+	CGPoint newPos;
+
+	// Is donkey on bridge?
+	if (((L3_BRIDGE_START_Y-20)<myDonkey.position.x) && (myDonkey.position.x<L3_BRIDGE_START_X+L3_BRIDGE_LENGTH)) {
+		// What tile is donkey on? (donkey_pos_on_bridge/tile_length)
+		int donkey_tile = ((myDonkey.position.x - L3_BRIDGE_START_X)/(L3_BRIDGE_LENGTH/L3_BRIDGE_TILE_COUNT));
+
+		// Donkey push on tile
+		new_y = bridgeTile[donkey_tile].position.y - 5;
+		CGPoint newPos = ccp(bridgeTile[donkey_tile].position.x,new_y);
+		bridgeTile[donkey_tile].position = newPos;
+		
+		// Place donkey according to tile
+		new_y = bridgeTile[donkey_tile].position.y + L3_DONKEY_BRIDGE_OFFSET;
+		newPos = ccp(donkey.position.x,new_y);
+		myDonkey.position = newPos;
+	} else {
+		newPos = ccp(myDonkey.position.x,L3_DONKEY_INITIAL_POS_Y);
+		myDonkey.position = newPos;
+	}
 }
 
 -(void) tick: (ccTime) dt {

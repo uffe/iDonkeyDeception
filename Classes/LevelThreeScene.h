@@ -13,6 +13,7 @@
 
 @interface LevelThree : LevelScene {
 	CCSprite *bridgeTile[L3_BRIDGE_TILE_COUNT];
+	float tile_y0[L3_BRIDGE_TILE_COUNT];
 }
 
 @end
