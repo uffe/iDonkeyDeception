@@ -203,6 +203,8 @@
 		9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF441211157E7F009FA185 /* knife_hit1.caf */; };
 		9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF44801115842E009FA185 /* LevelThreeScene.m */; };
 		9BEF45A011158A45009FA185 /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF459F11158A45009FA185 /* entitlements.plist */; };
+		9BEF45F21115944A009FA185 /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF45F11115944A009FA185 /* EndScene.m */; };
+		9BEF45F4111594E3009FA185 /* endbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF45F3111594E3009FA185 /* endbackground.png */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -438,6 +440,9 @@
 		9BEF447F1115842E009FA185 /* LevelThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThreeScene.h; sourceTree = "<group>"; };
 		9BEF44801115842E009FA185 /* LevelThreeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThreeScene.m; sourceTree = "<group>"; };
 		9BEF459F11158A45009FA185 /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
+		9BEF45F01115944A009FA185 /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndScene.h; sourceTree = "<group>"; };
+		9BEF45F11115944A009FA185 /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndScene.m; sourceTree = "<group>"; };
+		9BEF45F3111594E3009FA185 /* endbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endbackground.png; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -569,6 +574,8 @@
 				1F3B9A2B0EF2145700286867 /* TrickTheDonkeyAppDelegate.m */,
 				9BEF447F1115842E009FA185 /* LevelThreeScene.h */,
 				9BEF44801115842E009FA185 /* LevelThreeScene.m */,
+				9BEF45F01115944A009FA185 /* EndScene.h */,
+				9BEF45F11115944A009FA185 /* EndScene.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -838,6 +845,7 @@
 		9B22543511143AD200E4361C /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				9BEF45F3111594E3009FA185 /* endbackground.png */,
 				AD9147011114FAE500BFF57C /* bane-2-forgrund.png */,
 				9BEF42061114AC83009FA185 /* DonkeySprite1.png */,
 				9BEF42071114AC83009FA185 /* vand.png */,
@@ -1057,6 +1065,7 @@
 				AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */,
 				9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */,
 				9BEF45A011158A45009FA185 /* entitlements.plist in Resources */,
+				9BEF45F4111594E3009FA185 /* endbackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1074,6 +1083,7 @@
 				A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */,
 				AD0969971114CC13005822FB /* LevelScene.m in Sources */,
 				9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */,
+				9BEF45F21115944A009FA185 /* EndScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
