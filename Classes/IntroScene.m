@@ -12,10 +12,11 @@
 @implementation IntroScene
 
 - (void)setLastFrame{
-	[devil setDisplayFrame:@"devil" index:22];
-	CCSprite *rope_extension = [CCSprite spriteWithFile:@"rope.png"];
-	rope_extension.position = ccp(266,17);
-	[self addChild:rope_extension];
+	[devil setDisplayFrame:@"devil2" index:0];
+	devil.position = ccp(devil.position.x, devil.position.y-15);
+//	CCSprite *rope_extension = [CCSprite spriteWithFile:@"rope.png"];
+//	rope_extension.position = ccp(266,17);
+//	[self addChild:rope_extension];
 }
 
 - (void)levelCompleted{
@@ -46,6 +47,10 @@
 		[da addFrameWithFilename:@"06_laugh.png"];
 		[da addFrameWithFilename:@"07_laugh.png"];
 		[da addFrameWithFilename:@"08_laugh.png"];
+		[da addFrameWithFilename:@"05_laugh.png"];
+		[da addFrameWithFilename:@"06_laugh.png"];
+		[da addFrameWithFilename:@"07_laugh.png"];
+		[da addFrameWithFilename:@"08_laugh.png"];
 		[da addFrameWithFilename:@"09_movement.png"];
 		[da addFrameWithFilename:@"10_movement.png"];
 		[da addFrameWithFilename:@"11_pause.png"];
@@ -60,8 +65,11 @@
 		[da addFrameWithFilename:@"20_fishing.png"];
 		[da addFrameWithFilename:@"21_fishing.png"];
 		[da addFrameWithFilename:@"22_fishing.png"];
-		[da addFrameWithFilename:@"End.png"];
 		[devil addAnimation:da];
+
+		CCAnimation *da2 = [CCAnimation animationWithName:@"devil2" delay:0];
+		[da2 addFrameWithFilename:@"End2.png"];
+		[devil addAnimation:da2];
 		
 		id actionDelay = [CCDelayTime actionWithDuration:2];
 		id actionAnim = [CCAnimate actionWithAnimation:da];
