@@ -8,7 +8,14 @@
 //#import "Helper.h"
 #import "EndScene.h"
 
-// HelloWorld implementation
+// *** Trick The Donkey: Level 3 ***
+//
+// Level 3 places the donkey on the left side of a bridge
+// when the donkey walks on the bridge, its weight presses the bridge down
+// if the donkey eats the carrot while standing in the middle of the bridge, the bridge collapses
+// and the donkey dies.
+// a large carrot is used that increases the weight of the donkey when eaten.
+
 @implementation LevelThree
 
 
@@ -32,15 +39,19 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
+		[self setIsTouchEnabled:YES];
 		
-		// addbackground
+		// schedule game loop
+		[self schedule: @selector(tick:)];
+
+		// set initial game mode
+		mode = ModeAlive;
+		
+		// add background
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		CCSprite *background = [CCSprite spriteWithFile:@"background3.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
-		[self setIsTouchEnabled:YES];
-		[self schedule: @selector(tick:)];
-		mode=ModeAlive;
 		
 		// add carrot
 		carrot = [CCSprite spriteWithFile:@"carrot-stor.png"];
