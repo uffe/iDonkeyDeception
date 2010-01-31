@@ -9,70 +9,86 @@
 // HelloWorld implementation
 @implementation EndScene
 
-
-#define L1_DONKEY_INITIAL_POS_X 40
-#define L1_DONKEY_INITIAL_POS ccp(L1_DONKEY_INITIAL_POS_X, 190)
-#define L1_DONKEY_MAX_X 1000
 // on "init" you need to initialize your instance
 -(id) init
 {
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
-		
 		// addbackground
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		CCSprite *background = [CCSprite spriteWithFile:@"endbackground.png"];
+		CGSize size = [[CCDirector sharedDirector] winSize];		
+		CCSprite *background = [CCSprite spriteWithFile:@"background_prequel.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
-		[self setIsTouchEnabled:YES];
-		[self schedule: @selector(tick:)];
-		mode=ModeAlive;
 		
+		// add devil
+		devil = [CCSprite spriteWithFile:@"Start.png"];
+		devil.position = ccp(300,100);
+		CCAnimation *da = [CCAnimation animationWithName:@"devil" delay:0.3f];
+		[da addFrameWithFilename:@"Start.png"];
+		[da addFrameWithFilename:@"02_hand_movement.png"];
+		[da addFrameWithFilename:@"03_hand_movement.png"];
+		[da addFrameWithFilename:@"04_hand_movement.png"];
+		[da addFrameWithFilename:@"05_laugh.png"];
+		[da addFrameWithFilename:@"06_laugh.png"];
+		[da addFrameWithFilename:@"07_laugh.png"];
+		[da addFrameWithFilename:@"08_laugh.png"];
+		[da addFrameWithFilename:@"05_laugh.png"];
+		[da addFrameWithFilename:@"06_laugh.png"];
+		[da addFrameWithFilename:@"07_laugh.png"];
+		[da addFrameWithFilename:@"08_laugh.png"];
+		[da addFrameWithFilename:@"09_movement.png"];
+		[da addFrameWithFilename:@"10_movement.png"];
+		[da addFrameWithFilename:@"11_pause.png"];
+		[da addFrameWithFilename:@"12_wink.png"];
+		[da addFrameWithFilename:@"13_unwink.png"];
+		[da addFrameWithFilename:@"14_movement.png"];
+		[da addFrameWithFilename:@"15_grab.png"];
+		[da addFrameWithFilename:@"16_pole.png"];
+		[da addFrameWithFilename:@"17_pole.png"];
+		[da addFrameWithFilename:@"18_fishing.png"];
+		[da addFrameWithFilename:@"19_fishing.png"];
+		[da addFrameWithFilename:@"20_fishing.png"];
+		[da addFrameWithFilename:@"21_fishing.png"];
+		[da addFrameWithFilename:@"22_fishing.png"];
+		[devil addAnimation:da];
 
+		id actionDelay = [CCDelayTime actionWithDuration:2];
+		id actionAnim = [[CCAnimate actionWithAnimation:da] reverse];
+//		id actionCallFunc = [CCCallFunc actionWithTarget:self selector:@selector(levelCompleted)];
+		id actionSequence = [CCSequence actions: actionAnim, actionDelay, nil];
+		[devil runAction:actionSequence];
 		
-		// add donkey
-		//[self addChild:donkey];
-		//donkey.position = L1_DONKEY_INITIAL_POS;
+		[self addChild:devil];
 
-		
-	}
+		}
 	return self;
 }
 
-- (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (mode!=ModeAlive)
-		return kEventHandled;
-	UITouch *touch = [touches anyObject];
-	if (touch) {
-		CGPoint location = [touch locationInView: [touch view]];
-
-		return kEventHandled;
-	}
++(id) scene
+{
+	// 'scene' is an autorelease object.
+	CCScene *scene = [CCScene node];
 	
-	// we ignore the event. Other receivers will receive this event.
-	return kEventHandled;
+	// 'layer' is an autorelease object.
+	LevelScene *layer = [[self class] node];
 	
+	// add layer as a child to scene
+	[scene addChild: layer];
+	
+	// return the scene
+	return scene;
 }
-
-
--(void)playSpike {
-	NSLog(@"playSpike");
-	//TODO
-	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
-}
-
-
--(void) tick: (ccTime) dt {
-//	[super tick:dt];
-}
-
-
 
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
+	// in case you have something to dealloc, do it in this method
+	// in this particular example nothing needs to be released.
+	// cocos2d will automatically release all the children (Label)
+	
+	// don't forget to call "super dealloc"
 	[super dealloc];
-	[audioPlayerDict release];
+//	[audioPlayerDict release];
 }
 @end
