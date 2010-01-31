@@ -59,11 +59,17 @@
 		[fan addFrameWithFilename:@"fish.png"];
 		[fish addAnimation:fan];
 
+		CCSprite *barrel = [CCSprite spriteWithFile:@"Nuclear_waste_barrel_80x80.png"];
+		barrel.position = ccp(300,45);
+		[self addChild:barrel];
+
 		CCSprite *water = [CCSprite spriteWithFile:@"vand.png"];
 		water.position = ccp(480.0f/2+130, 140);
 
 		[self addChild:water];
 		[water runAction:[CCWaves3D actionWithWaves:100000 amplitude:40.0 grid:ccg(10,10) duration:200000]];
+
+		
 		
 		CCSprite *foreground = [CCSprite spriteWithFile:@"bane-2-forgrund.png"];
 		foreground.position = ccp(275, 125);
