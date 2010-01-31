@@ -24,7 +24,7 @@
 #define L3_BRIDGE_LENGTH 310
 #define L3_DONKEY_BRIDGE_OFFSET (40)
 #define L3_CARROT_BRIDGE_OFFSET (150)
-#define L3_DONKEY_BRIDGE_COLLAPSE_Y (157)
+#define L3_DONKEY_BRIDGE_COLLAPSE_Y (160)
 
 // on "init" you need to initialize your instance
 -(id) init
