@@ -43,10 +43,16 @@
 		mode=ModeAlive;
 		
 		// add carrot
+		carrot = [CCSprite spriteWithFile:@"carrot-stor.png"];
 		[self addChild:carrot];
 		carrot_initial_pos_x = L3_CARROT_INITIAL_POS_X;
 		carrot_initial_pos_y = L3_CARROT_INITIAL_POS_Y;
 		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
+
+		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
+		[an addFrameWithFilename:@"carrot-stor.png"];
+		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
+		[carrot addAnimation:an];
 		
 		// add donkey
 		[self addChild:donkey];
@@ -123,6 +129,8 @@
 	if (ModeDead==mode) {
 		return;
 	}
+	
+	// Verlet integration <- google it :)
 	// Momentum (and gravity and drag)
 	for (int i=1;i<L3_BRIDGE_TILE_COUNT-1;i++) {
 		new_y = tile_y0[i] + (bridgeTile[i].position.y - tile_y0[i])*0.5f - gravity_acc;

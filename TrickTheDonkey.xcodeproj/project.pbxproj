@@ -256,6 +256,7 @@
 		AD570146111592CD00AB6BCF /* bridgetile.png in Resources */ = {isa = PBXBuildFile; fileRef = AD570143111592CD00AB6BCF /* bridgetile.png */; };
 		AD570147111592CD00AB6BCF /* foreground3.png in Resources */ = {isa = PBXBuildFile; fileRef = AD570144111592CD00AB6BCF /* foreground3.png */; };
 		AD57032D1115BA1700AB6BCF /* Nuclear_waste_barrel_80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = AD57032C1115BA1700AB6BCF /* Nuclear_waste_barrel_80x80.png */; };
+		AD57034E1115C00C00AB6BCF /* carrot-stor.png in Resources */ = {isa = PBXBuildFile; fileRef = AD57034D1115C00C00AB6BCF /* carrot-stor.png */; };
 		AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */ = {isa = PBXBuildFile; fileRef = AD9147011114FAE500BFF57C /* bane-2-forgrund.png */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
@@ -532,6 +533,7 @@
 		AD570143111592CD00AB6BCF /* bridgetile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bridgetile.png; sourceTree = "<group>"; };
 		AD570144111592CD00AB6BCF /* foreground3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foreground3.png; sourceTree = "<group>"; };
 		AD57032C1115BA1700AB6BCF /* Nuclear_waste_barrel_80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nuclear_waste_barrel_80x80.png; sourceTree = "<group>"; };
+		AD57034D1115C00C00AB6BCF /* carrot-stor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carrot-stor.png"; sourceTree = "<group>"; };
 		AD9147011114FAE500BFF57C /* bane-2-forgrund.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bane-2-forgrund.png"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -939,6 +941,7 @@
 				9BEF402E111483E1009FA185 /* fish.png */,
 				A20940F31114BCFB0028AC3B /* fishclosed.png */,
 				9BEF402F111483E1009FA185 /* grassandfence.png */,
+				AD57034D1115C00C00AB6BCF /* carrot-stor.png */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -1211,6 +1214,7 @@
 				AD57032D1115BA1700AB6BCF /* Nuclear_waste_barrel_80x80.png in Resources */,
 				A2EC12E31115BCE600089DA7 /* tut1.png in Resources */,
 				A2EC12E41115BCE600089DA7 /* tut2.png in Resources */,
+				AD57034E1115C00C00AB6BCF /* carrot-stor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
