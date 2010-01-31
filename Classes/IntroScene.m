@@ -14,7 +14,7 @@
 - (void)setLastFrame{
 	[devil setDisplayFrame:@"devil" index:22];
 	CCSprite *rope_extension = [CCSprite spriteWithFile:@"rope.png"];
-	rope_extension.position = ccp(265,17);
+	rope_extension.position = ccp(266,17);
 	[self addChild:rope_extension];
 }
 

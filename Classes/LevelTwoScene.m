@@ -5,6 +5,7 @@
 
 // Import the interfaces
 #import "LevelTwoScene.h"
+#import "LevelThreeScene.h"
 
 // HelloWorld implementation
 @implementation LevelTwo
@@ -69,7 +70,8 @@
 		[self addChild:foreground];
 
 		// play beach song
-		[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"thebeech"] withObject:nil];
+		[[audioPlayerDict objectForKey:@"thebeech"] play];
+		
 	}
 	return self;
 }
@@ -99,7 +101,6 @@
 	
 	// we ignore the event. Other receivers will receive this event.
 	return kEventHandled;
-	
 }
 
 -(void) tick: (ccTime) dt {
@@ -120,6 +121,9 @@
 			[fish runAction:[CCJumpTo actionWithDuration:1.0f position:donkey.position height:150 jumps:1]];
 			[fish runAction:[CCScaleBy actionWithDuration:1.0f scale:1.5f]];
 			fish.flipX = NO;
+			[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:3.0f];
+			[self performSelector:@selector(playKnifeSound) withObject:nil afterDelay:0.9f];
+
 		}
 		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
 			// move the fish
@@ -183,7 +187,10 @@
 	}
 }
 
-
+-(void) levelCompleted{
+	[[audioPlayerDict objectForKey:@"thebeech"] stop];
+	[[CCDirector sharedDirector] pushScene: [CCSlideInRTransition transitionWithDuration:1 scene:[LevelThree scene]]];	
+}
 
 
 // on "dealloc" you need to release all your retained objects

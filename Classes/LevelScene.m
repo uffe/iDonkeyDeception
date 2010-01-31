@@ -22,7 +22,7 @@
 							[Helper prepAudio:@"applause"],@"applause",
 							[Helper prepAudio:@"trombone"],@"trombone",
 							[Helper prepAudio:@"thebeech"],@"thebeech",
-//							[Helper prepAudio:@"knife_hit"],@"knife",
+							[Helper prepAudio:@"knife_hit1"],@"knife",
 							nil] retain];
 		
 		// Create carrot and its animations
@@ -77,6 +77,10 @@
 	
 	// return the scene
 	return scene;
+}
+
+- (void) playKnifeSound {
+	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
 }
 
 @end

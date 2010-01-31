@@ -19,12 +19,14 @@
  cocos2d helper macros
  */
 
-#if COCOS2D_DEBUG
+
+
+//#if COCOS2D_DEBUG
 //#define CCLOG(s, …) NSLog((@”%s %s:%d ” s), __func__, basename(__FILE__), __LINE__, ## __VA_ARGS__);
-#define CCLOG(...) NSLog(__VA_ARGS__)
-#else
+//#define CCLOG(...) NSLog(__VA_ARGS__)
+//#else
 #define CCLOG(...) do {} while (0)
-#endif
+//#endif
 
 //simple macro that swaps 2 variables
 #define CC_SWAP( x, y )			\

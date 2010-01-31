@@ -6,10 +6,12 @@
 //  Copyright OGP Consult 2010. All rights reserved.
 //
 
+
 #import "TrickTheDonkeyAppDelegate.h"
 #import "cocos2d.h"
 #import "LevelOneScene.h"
 #import "LevelTwoScene.h"
+#import "LevelThreeScene.h"
 #import "IntroScene.h"
 
 @implementation TrickTheDonkeyAppDelegate
@@ -55,6 +57,7 @@
 	[[CCDirector sharedDirector] runWithScene: [IntroScene scene]];		
 //	[[CCDirector sharedDirector] runWithScene: [LevelOne scene]];
 //	[[CCDirector sharedDirector] runWithScene: [LevelTwo scene]];
+//	[[CCDirector sharedDirector] runWithScene: [LevelThree scene]];
 }
 
 
