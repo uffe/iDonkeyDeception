@@ -202,6 +202,7 @@
 		9BEF43C31114E207009FA185 /* thebeech.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C11114E207009FA185 /* thebeech.caf */; };
 		9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF441211157E7F009FA185 /* knife_hit1.caf */; };
 		9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF44801115842E009FA185 /* LevelThreeScene.m */; };
+		9BEF45A011158A45009FA185 /* entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF459F11158A45009FA185 /* entitlements.plist */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -436,6 +437,7 @@
 		9BEF441211157E7F009FA185 /* knife_hit1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knife_hit1.caf; sourceTree = "<group>"; };
 		9BEF447F1115842E009FA185 /* LevelThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThreeScene.h; sourceTree = "<group>"; };
 		9BEF44801115842E009FA185 /* LevelThreeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThreeScene.m; sourceTree = "<group>"; };
+		9BEF459F11158A45009FA185 /* entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = entitlements.plist; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 			children = (
 				1F3B9A820EF2151B00286867 /* TrickTheDonkey_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				9BEF459F11158A45009FA185 /* entitlements.plist */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1053,6 +1056,7 @@
 				9BEF43C31114E207009FA185 /* thebeech.caf in Resources */,
 				AD9147021114FAE500BFF57C /* bane-2-forgrund.png in Resources */,
 				9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */,
+				9BEF45A011158A45009FA185 /* entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,7 +1206,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Bjerregaard Nielsen";
+				CODE_SIGN_ENTITLEMENTS = entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -1217,7 +1223,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TrickTheDonkey;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37AC5B98-1C65-4DF9-9E60-5335FF375569";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Release;

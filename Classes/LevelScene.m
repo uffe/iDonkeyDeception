@@ -79,4 +79,8 @@
 	return scene;
 }
 
+- (void) playKnifeSound {
+	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
+}
+
 @end
