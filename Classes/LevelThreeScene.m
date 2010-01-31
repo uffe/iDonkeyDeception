@@ -12,12 +12,16 @@
 @implementation LevelThree
 
 
-#define L1_CARROT_INITIAL_POS_X 400
-#define L1_CARROT_INITIAL_POS_Y 290
+#define L3_CARROT_INITIAL_POS_X 200
+#define L3_CARROT_INITIAL_POS_Y 290
 
-#define L1_DONKEY_INITIAL_POS_X 40
-#define L1_DONKEY_INITIAL_POS ccp(L1_DONKEY_INITIAL_POS_X, 190)
-#define L1_DONKEY_MAX_X 1000
+#define L3_DONKEY_INITIAL_POS_X 40
+#define L3_DONKEY_INITIAL_POS ccp(L3_DONKEY_INITIAL_POS_X, 190)
+#define L3_DONKEY_MAX_X 1000
+#define L3_BRIDGE_START_X 90
+#define L3_BRIDGE_START_Y 145
+#define L3_BRIDGE_LENGTH 310
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -27,7 +31,7 @@
 		
 		// addbackground
 		CGSize size = [[CCDirector sharedDirector] winSize];
-		CCSprite *background = [CCSprite spriteWithFile:@"background.png"];
+		CCSprite *background = [CCSprite spriteWithFile:@"background3.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
 		[self setIsTouchEnabled:YES];
@@ -36,17 +40,23 @@
 		
 		// add carrot
 		[self addChild:carrot];
-		carrot_initial_pos_x = L1_CARROT_INITIAL_POS_X;
-		carrot_initial_pos_y = L1_CARROT_INITIAL_POS_Y;
+		carrot_initial_pos_x = L3_CARROT_INITIAL_POS_X;
+		carrot_initial_pos_y = L3_CARROT_INITIAL_POS_Y;
 		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
 		
 		// add donkey
 		[self addChild:donkey];
-		donkey.position = L1_DONKEY_INITIAL_POS;
-		
-		// background
-		CCSprite *lawn = [CCSprite spriteWithFile:@"grassandfence.png"];
-		lawn.position = ccp(480.0f/2-7.0, 97);
+		donkey.position = L3_DONKEY_INITIAL_POS;
+				
+		for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
+			bridgeTile[i] = [CCSprite spriteWithFile:@"bridgetile.png"];
+			bridgeTile[i].position = ccp(L3_BRIDGE_START_X+i*L3_BRIDGE_LENGTH/L3_BRIDGE_TILE_COUNT,L3_BRIDGE_START_Y);
+			[self addChild:bridgeTile[i]];
+		}
+
+		// foreground
+		CCSprite *lawn = [CCSprite spriteWithFile:@"foreground3.png"];
+		lawn.position = ccp(480.0f/2-7.0, 125);
 		[self addChild:lawn];
 		
 	}
@@ -92,9 +102,24 @@
 }
 
 
+- (void)animateBridge:(ccTime)dt {
+//	int previous_y = L3_BRIDGE_START_Y;
+//	int next_y = L3_BRIDGE_START_Y;
+	for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
+//		if ((L3_BRIDGE_TILE_COUNT-1)==i) {
+//		}
+		CGPoint newPos = ccp(bridgeTile[i].position.x, bridgeTile[i].position.y);
+		bridgeTile[i].position = newPos;
+	}
+//	donkey.position=newPos;
+	
+}
+
 -(void) tick: (ccTime) dt {
 	[super tick:dt];
 #define FALL_DOWN_POS 345.0f
+	
+	[self animateBridge:dt];
 	
 	if (mode==ModeAlive) {	
 		if (dcDist < DONKEY_EAT_DIST) {
@@ -119,7 +144,7 @@
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
-			if (newPos.x < L1_DONKEY_MAX_X) {
+			if (newPos.x < L3_DONKEY_MAX_X) {
 				int donkey_walk_frame_index = newPos.x/DONKEY_FRAME_DX;
 				[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
 				donkey.position=newPos;
@@ -141,7 +166,7 @@
 			mode=ModeReturning;
 		}
 	} else if (mode==ModeReturning) {
-		if (donkey.position.x>L1_DONKEY_INITIAL_POS_X) {
+		if (donkey.position.x>L3_DONKEY_INITIAL_POS_X) {
 			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
 			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
 			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
