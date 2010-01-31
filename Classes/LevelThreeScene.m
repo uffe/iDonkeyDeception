@@ -87,7 +87,7 @@
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	// only handle touch if we're in alive game mode
+	// only move carrot if in alive mode
 	if (mode != ModeAlive) { return kEventHandled; }
 	
 	UITouch *touch = [touches anyObject];
@@ -100,14 +100,10 @@
 		
 		// update carrot position
 		carrot.position = ccp(convertedPoint.x, carrot.position.y);
-		
-		// no other handlers will receive this event
-		return kEventHandled;
 	}
 	
-	// event has been handled
+	// we've handled the event
 	return kEventHandled;
-	
 }
 
 // push end scene when level completed
