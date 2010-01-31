@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>ttd_icon2.png</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.olegammelgaard.donkey</string>
+	<string>dk.denfalskezebra.trickthedonkey</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -20,11 +20,11 @@
 	<string>2.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIStatusBarHidden</key>
-	<true/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeRight</string>
 	<key>UIPrerenderedIcon</key>
 	<string>YES</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
