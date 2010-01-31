@@ -59,7 +59,7 @@
 		carrot_initial_pos_x = L3_CARROT_INITIAL_POS_X;
 		carrot_initial_pos_y = L3_CARROT_INITIAL_POS_Y;
 		carrot.position = ccp(carrot_initial_pos_x,carrot_initial_pos_y);
-
+		// add different carrot states as an animation
 		CCAnimation *an = [CCAnimation animationWithName:@"carrot" delay:0];
 		[an addFrameWithFilename:@"carrot-stor.png"];
 		[an addFrameWithFilename:@"Carrot_alt2_gone.png"];
@@ -87,8 +87,9 @@
 }
 
 - (BOOL)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (mode!=ModeAlive)
-		return kEventHandled;
+	// only handle touch if we're in alive game mode
+	if (mode != ModeAlive) { return kEventHandled; }
+	
 	UITouch *touch = [touches anyObject];
 	if (touch) {
 		CGPoint location = [touch locationInView: [touch view]];
@@ -97,49 +98,45 @@
 		// The touches are always in "portrait" coordinates. You need to convert them to your current orientation
 		CGPoint convertedPoint = [[CCDirector sharedDirector] convertToGL:location];
 		
-		// we stop the all running actions
-		[carrot stopAllActions];
-		
-		// and we run a new action
-		
+		// update carrot position
 		carrot.position = ccp(convertedPoint.x, carrot.position.y);
-		//[carrot runAction: [CCMoveTo actionWithDuration:0.1 position: ccp(convertedPoint.x, carrot.position.y)]];
 		
 		// no other handlers will receive this event
 		return kEventHandled;
 	}
 	
-	// we ignore the event. Other receivers will receive this event.
+	// event has been handled
 	return kEventHandled;
 	
 }
 
--(void) levelCompleted{
+// push end scene when level completed
+-(void) levelCompleted {
 	[[CCDirector sharedDirector] pushScene: [CCSlideInTTransition transitionWithDuration:1 scene:[EndScene scene]]];	
 }
 
+// move carrot back to initial position
 - (void) moveBackCarrot {
 	[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(263, carrot_initial_pos_y)]];
 }
 
+// play sound "spike"
 -(void)playSpike {
-	NSLog(@"playSpike");
-	//TODO
+	// TODO
 	[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"knife"] withObject:nil];
 }
 
 
+// animate the bridge tiles
 - (void)animateBridge:(ccTime)dt {
 	float previous_tile_y = L3_BRIDGE_START_Y;
 	float next_tile_y = L3_BRIDGE_START_Y;
 	float new_y;
-//	bridgeTile[5].position = ccp(bridgeTile[5].position.x, L3_BRIDGE_START_Y-20);
 	float gravity_acc = 0.3f;
 	float tile_chain_pull = 0.7f;
 	
-	if (ModeDead==mode) {
-		return;
-	}
+	// don't do anything if in dead mode
+	if (ModeDead == mode) {	return; }
 	
 	// Verlet integration <- google it :)
 	// Momentum (and gravity and drag)
@@ -158,11 +155,7 @@
 				next_tile_y = bridgeTile[i+1].position.y;
 			}
 			float dist_y = (bridgeTile[i].position.y - previous_tile_y) + (bridgeTile[i].position.y - next_tile_y);
-//			if (dist_y>5) {
-				new_y = bridgeTile[i].position.y - tile_chain_pull*(dist_y);
-//			} else {
-//				new_y = bridgeTile[i].position.y - tile_chain_pull*(dist_y-10);
-//			}
+			new_y = bridgeTile[i].position.y - tile_chain_pull*(dist_y);
 			previous_tile_y = bridgeTile[i].position.y; // remember this for next tile..
 			CGPoint newPos = ccp(bridgeTile[i].position.x, new_y);
 			bridgeTile[i].position = newPos;
@@ -182,11 +175,9 @@
 		bridgeTile[donkey_tile].position = newPos;
 		
 		// Place donkey according to tile
-//		new_y = bridgeTile[donkey_tile].position.y + L3_DONKEY_BRIDGE_OFFSET;
 		new_y = bridgeTile[donkey_tile].position.y + donkey.contentSize.height*donkey.scaleY/2.0f;
 		newPos = ccp(donkey.position.x,new_y);
 		myDonkey.position = newPos;
-
 	} else {
 		newPos = ccp(myDonkey.position.x,L3_DONKEY_INITIAL_POS_Y);
 		myDonkey.position = newPos;
@@ -201,79 +192,101 @@
 		newPos = ccp(carrot.position.x,new_y);
 		carrot.position = newPos;
 	} 
-//	else {
-//		newPos = ccp(carrot.position.x,L3_CARROT_INITIAL_POS_Y);
-//		carrot.position = newPos;
-//	}
 }
 
+// game loop
 -(void) tick: (ccTime) dt {
 	[super tick:dt];
-#define FALL_DOWN_POS 345.0f
-	
+	#define FALL_DOWN_POS 345.0f
 	[self animateBridge:dt];
-//	NSLog(@"%f",donkey.position.y);
-	if (mode==ModeAlive) {	
+	
+	// player is alive
+	if (mode == ModeAlive) {	
+		// donkey is close enough to carrot to eat it
 		if (dcDist < DONKEY_EAT_DIST) {
-			mode=ModeCarrotCaught;
-//			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
-			
+			// change to carrot caught game mode
+			mode = ModeCarrotCaught;
+			// show carrot eaten image
 			[carrot setDisplayFrame:@"carrot" index:1];
-			
+			// move carrot back to initial position
 			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(carrot_initial_pos_x,carrot_initial_pos_y)]];
+			// reset time counter
+			// used to measure time since carrot was eaten
 			timeSinceAction=0.0f;
+			// scale donkey up to indicate that donkey's weight increases
 			[donkey runAction:[CCScaleTo actionWithDuration:0.3f scale:1.1f]];
+			
+		// carrot is close enough to carrot to be attracted by it but not close enough to eat it
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
+			// calculate how much donkey should move
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
+			
+			// only move donkey if it's not past max position
 			if (newPos.x < L3_DONKEY_MAX_X) {
+				// update animation frame
 				int donkey_walk_frame_index = newPos.x/DONKEY_FRAME_DX;
 				[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
-				donkey.position=newPos;
+				// set new position
+				donkey.position = newPos;
 			}
-			//NSLog(@"Ticked! %f", dt);
-			// move the donkey
-			//			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
-			//			donkey.position=ccp((donkey.position.x+moved), donkey.position.y);
-			//			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
-			//			[donkey setDisplayFrame:@"donkey_stretch" index:donkey_walk_frame_index%4];
+			
+		// donkey is not close enough to carrot to interact with it
 		} else {
 			[donkey setDisplayFrame:@"donkey_neutral" index:0];
 		}
-	} else if (mode==ModeCarrotCaught) {
+		
+	// carrot has been caught by the donkey
+	} else if (mode == ModeCarrotCaught) {
+		// time since entering caught mode is less than time when we reset or complete the level
 		if (timeSinceAction < REVERT_TIME) {
-			NSLog(@"eat");
+			// update the eat animation frame
 			int donkey_eat_index = timeSinceAction*1000/DONKEY_CHEW_DT;
 			[donkey setDisplayFrame:@"donkey_eat" index:donkey_eat_index%2];
+			
+		// we're ready to reset or complete the level
 		} else {
+			// donkey has weighed bridge down enough to complete the level
 			if ((donkey.position.y - (donkey.contentSize.height*donkey.scaleY-donkey.contentSize.height)) < L3_DONKEY_BRIDGE_COLLAPSE_Y) {
-				// donkey fall down
+				// animate dokey falling down
 				[donkey runAction:[CCMoveTo actionWithDuration:1.5f position:ccp(donkey.position.x+100,0)]];
 				[donkey runAction:[CCRotateTo actionWithDuration:1.2 angle:179.0]];
-				mode=ModeDead;
+				// game mode dead
+				mode = ModeDead;
+				// animate bridge falling down
 				for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
-					//					[bridgeTile[i] runAction:[CCRotateTo actionWithDuration:1.2 position:ccp(bridgeTile[i].position.x,0)]];
 					[bridgeTile[i] runAction:[CCMoveTo actionWithDuration:1.2 position:ccp(bridgeTile[i].position.x,0)]];
 				}
+				// play sound
 				[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
+				// perform level complete actions
 				[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
 				[self performSelector:@selector(playSpike) withObject:nil afterDelay:1.3];
 				[self performSelector:@selector(moveBackCarrot) withObject:nil afterDelay:0.2];
-				//			[NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(playSpike) userInfo:nil repeats:NO];
+			
+			// carrot is eaten but donkey is not far enough down on bridge to complete level, so reset level
 			} else {
-				mode=ModeReturning;
+				// change game mode 
+				mode = ModeReturning;
+				// scale donkey back to normal size
 				[donkey runAction:[CCScaleTo actionWithDuration:0.3f scale:1.0f]];
+				// play level failed sound
 				[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			}
 		}
-	} else if (mode==ModeReturning) {
+		
+	// return carrot and donkey to initial positions
+	} else if (mode == ModeReturning) {
+		// donkey is not back to initial position
 		if (donkey.position.x>L3_DONKEY_INITIAL_POS_X) {
+			// update donkey position and animation
 			float moved = DONKEY_VEL*dt + (30*dt*DONKEY_ACC);
-			donkey.position=ccp(donkey.position.x-moved, donkey.position.y);
+			donkey.position = ccp(donkey.position.x-moved, donkey.position.y);
 			int donkey_walk_frame_index = donkey.position.x/DONKEY_FRAME_DX;
 			[donkey setDisplayFrame:@"donkey_neutral" index:donkey_walk_frame_index%4];
+		// level is reset, so change to alive mode
 		} else {
-			mode=ModeAlive;
+			mode = ModeAlive;
 			[carrot setDisplayFrame:@"carrot" index:0];
 		}
 	}
@@ -284,10 +297,6 @@
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
 	// don't forget to call "super dealloc"
 	[super dealloc];
 	[audioPlayerDict release];
