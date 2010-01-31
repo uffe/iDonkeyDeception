@@ -70,6 +70,7 @@
 		[self addChild:foreground];
 
 		// play beach song
+		[[audioPlayerDict objectForKey:@"thebeech"] setVolume:0.1];
 		[[audioPlayerDict objectForKey:@"thebeech"] play];
 		
 	}
