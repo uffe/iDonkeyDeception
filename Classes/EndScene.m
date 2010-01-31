@@ -9,6 +9,13 @@
 // HelloWorld implementation
 @implementation EndScene
 
+- (void)showTut {
+	CGSize size = [[CCDirector sharedDirector] winSize];		
+	CCSprite *tut = [CCSprite spriteWithFile:@"tut2.png"];
+	tut.position = ccp(size.width/2, 200);
+	[self addChild:tut];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -20,6 +27,8 @@
 		CCSprite *background = [CCSprite spriteWithFile:@"background_prequel.png"];
 		background.position = ccp( size.width /2 , size.height/2 );
 		[self addChild:background];
+		
+		[self showTut];
 		
 		// add devil
 		devil = [CCSprite spriteWithFile:@"Start.png"];
