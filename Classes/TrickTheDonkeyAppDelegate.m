@@ -11,6 +11,7 @@
 #import "cocos2d.h"
 #import "LevelOneScene.h"
 #import "LevelTwoScene.h"
+#import "LevelThreeScene.h"
 
 
 @implementation TrickTheDonkeyAppDelegate
@@ -56,6 +57,7 @@
 		
 	[[CCDirector sharedDirector] runWithScene: [LevelOne scene]];
 //	[[CCDirector sharedDirector] runWithScene: [LevelTwo scene]];
+//	[[CCDirector sharedDirector] runWithScene: [LevelThree scene]];
 }
 
 
