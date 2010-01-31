@@ -23,6 +23,13 @@
 	[[CCDirector sharedDirector] pushScene: [CCSlideInBTransition transitionWithDuration:1 scene:[LevelOne scene]]];	
 }
 
+- (void)showTut {
+	CGSize size = [[CCDirector sharedDirector] winSize];		
+	CCSprite *tut = [CCSprite spriteWithFile:@"tut1.png"];
+	tut.position = ccp(size.width/2, 200);
+	[self addChild:tut];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
@@ -38,12 +45,15 @@
 		// add devil
 		devil = [CCSprite spriteWithFile:@"Start.png"];
 		devil.position = ccp(300,100);
+		CCAnimation *da1 = [CCAnimation animationWithName:@"devil1" delay:0.3f];
+		[da1 addFrameWithFilename:@"Start.png"];
+		[da1 addFrameWithFilename:@"02_hand_movement.png"];
+		[da1 addFrameWithFilename:@"03_hand_movement.png"];
+		[da1 addFrameWithFilename:@"04_hand_movement.png"];
+		[da1 addFrameWithFilename:@"05_laugh.png"];
+		[devil addAnimation:da1];
+
 		CCAnimation *da = [CCAnimation animationWithName:@"devil" delay:0.3f];
-		[da addFrameWithFilename:@"Start.png"];
-		[da addFrameWithFilename:@"02_hand_movement.png"];
-		[da addFrameWithFilename:@"03_hand_movement.png"];
-		[da addFrameWithFilename:@"04_hand_movement.png"];
-		[da addFrameWithFilename:@"05_laugh.png"];
 		[da addFrameWithFilename:@"06_laugh.png"];
 		[da addFrameWithFilename:@"07_laugh.png"];
 		[da addFrameWithFilename:@"08_laugh.png"];
@@ -71,11 +81,13 @@
 		[da2 addFrameWithFilename:@"End2.png"];
 		[devil addAnimation:da2];
 		
+		id actionShowTut = [CCCallFunc actionWithTarget:self selector:@selector(showTut)];
 		id actionDelay = [CCDelayTime actionWithDuration:2];
+		id actionAnim1 = [CCAnimate actionWithAnimation:da1];
 		id actionAnim = [CCAnimate actionWithAnimation:da];
 		id actionCallFunc = [CCCallFunc actionWithTarget:self selector:@selector(levelCompleted)];
 		id actionLastFrame = [CCCallFunc actionWithTarget:self selector:@selector(setLastFrame)];
-		id actionSequence = [CCSequence actions: actionDelay, actionAnim, actionLastFrame, actionDelay, actionCallFunc, nil];
+		id actionSequence = [CCSequence actions: actionDelay, actionAnim1, actionShowTut, actionAnim, actionLastFrame, actionDelay, actionCallFunc, nil];
 		[devil runAction:actionSequence];
 		
 		[self addChild:devil];
