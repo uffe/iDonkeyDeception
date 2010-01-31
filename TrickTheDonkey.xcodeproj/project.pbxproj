@@ -201,6 +201,7 @@
 		9BEF43C21114E207009FA185 /* fishappear.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C01114E207009FA185 /* fishappear.caf */; };
 		9BEF43C31114E207009FA185 /* thebeech.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF43C11114E207009FA185 /* thebeech.caf */; };
 		9BEF441311157E7F009FA185 /* knife_hit1.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9BEF441211157E7F009FA185 /* knife_hit1.caf */; };
+		9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEF44801115842E009FA185 /* LevelThreeScene.m */; };
 		A20940F41114BCFC0028AC3B /* fishclosed.png in Resources */ = {isa = PBXBuildFile; fileRef = A20940F31114BCFB0028AC3B /* fishclosed.png */; };
 		A218F7E711145DB0001FA031 /* applause.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E511145DB0001FA031 /* applause.caf */; };
 		A218F7E811145DB0001FA031 /* trombone.caf in Resources */ = {isa = PBXBuildFile; fileRef = A218F7E611145DB0001FA031 /* trombone.caf */; };
@@ -433,6 +434,8 @@
 		9BEF43C01114E207009FA185 /* fishappear.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fishappear.caf; sourceTree = SOURCE_ROOT; };
 		9BEF43C11114E207009FA185 /* thebeech.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = thebeech.caf; sourceTree = SOURCE_ROOT; };
 		9BEF441211157E7F009FA185 /* knife_hit1.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = knife_hit1.caf; sourceTree = "<group>"; };
+		9BEF447F1115842E009FA185 /* LevelThreeScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThreeScene.h; sourceTree = "<group>"; };
+		9BEF44801115842E009FA185 /* LevelThreeScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThreeScene.m; sourceTree = "<group>"; };
 		A20940F31114BCFB0028AC3B /* fishclosed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fishclosed.png; sourceTree = "<group>"; };
 		A218F7E511145DB0001FA031 /* applause.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = applause.caf; sourceTree = "<group>"; };
 		A218F7E611145DB0001FA031 /* trombone.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = trombone.caf; sourceTree = "<group>"; };
@@ -561,6 +564,8 @@
 				A23FFFEF11148EE500E39E37 /* LevelTwoScene.m */,
 				1F3B9A2C0EF2145700286867 /* TrickTheDonkeyAppDelegate.h */,
 				1F3B9A2B0EF2145700286867 /* TrickTheDonkeyAppDelegate.m */,
+				9BEF447F1115842E009FA185 /* LevelThreeScene.h */,
+				9BEF44801115842E009FA185 /* LevelThreeScene.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1064,6 +1069,7 @@
 				A2597DD011145689001BBEB9 /* Helper.m in Sources */,
 				A23FFFF011148EE500E39E37 /* LevelTwoScene.m in Sources */,
 				AD0969971114CC13005822FB /* LevelScene.m in Sources */,
+				9BEF44811115842E009FA185 /* LevelThreeScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
