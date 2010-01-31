@@ -171,7 +171,8 @@
 		bridgeTile[donkey_tile].position = newPos;
 		
 		// Place donkey according to tile
-		new_y = bridgeTile[donkey_tile].position.y + L3_DONKEY_BRIDGE_OFFSET;
+//		new_y = bridgeTile[donkey_tile].position.y + L3_DONKEY_BRIDGE_OFFSET;
+		new_y = bridgeTile[donkey_tile].position.y + donkey.contentSize.height*donkey.scaleY/2.0f;
 		newPos = ccp(donkey.position.x,new_y);
 		myDonkey.position = newPos;
 
@@ -210,6 +211,7 @@
 			
 			[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(carrot_initial_pos_x,carrot_initial_pos_y)]];
 			timeSinceAction=0.0f;
+			[donkey runAction:[CCScaleTo actionWithDuration:0.3f scale:1.1f]];
 		} else if (dcDist < DONKEY_CARROT_REACT_DISTANCE && dcDist > DONKEY_EAT_DIST) {
 			float moved = DONKEY_VEL*dt + (DONKEY_CARROT_REACT_DISTANCE-dcDist)*dt*DONKEY_ACC;
 			CGPoint newPos = ccp(donkey.position.x+moved, donkey.position.y);
@@ -229,15 +231,17 @@
 		}
 	} else if (mode==ModeCarrotCaught) {
 		if (timeSinceAction < REVERT_TIME) {
+			NSLog(@"eat");
 			int donkey_eat_index = timeSinceAction*1000/DONKEY_CHEW_DT;
 			[donkey setDisplayFrame:@"donkey_eat" index:donkey_eat_index%2];
-			if (donkey.position.y < L3_DONKEY_BRIDGE_COLLAPSE_Y) {
+		} else {
+			if ((donkey.position.y - (donkey.contentSize.height*donkey.scaleY-donkey.contentSize.height)) < L3_DONKEY_BRIDGE_COLLAPSE_Y) {
 				// donkey fall down
 				[donkey runAction:[CCMoveTo actionWithDuration:1.5f position:ccp(donkey.position.x+100,0)]];
 				[donkey runAction:[CCRotateTo actionWithDuration:1.2 angle:179.0]];
 				mode=ModeDead;
 				for (int i=0;i<L3_BRIDGE_TILE_COUNT;i++) {
-//					[bridgeTile[i] runAction:[CCRotateTo actionWithDuration:1.2 position:ccp(bridgeTile[i].position.x,0)]];
+					//					[bridgeTile[i] runAction:[CCRotateTo actionWithDuration:1.2 position:ccp(bridgeTile[i].position.x,0)]];
 					[bridgeTile[i] runAction:[CCMoveTo actionWithDuration:1.2 position:ccp(bridgeTile[i].position.x,0)]];
 				}
 				[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
@@ -245,10 +249,11 @@
 				[self performSelector:@selector(playSpike) withObject:nil afterDelay:1.3];
 				[self performSelector:@selector(moveBackCarrot) withObject:nil afterDelay:0.2];
 				//			[NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(playSpike) userInfo:nil repeats:NO];
+			} else {
+				mode=ModeReturning;
+				[donkey runAction:[CCScaleTo actionWithDuration:0.3f scale:1.0f]];
+				[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 			}
-		} else {
-			mode=ModeReturning;
-			[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"trombone"] withObject:nil];
 		}
 	} else if (mode==ModeReturning) {
 		if (donkey.position.x>L3_DONKEY_INITIAL_POS_X) {

@@ -49,10 +49,12 @@
 		fish = [CCSprite spriteWithFile:@"fishclosed.png"];
 		fish.scaleX = 0.5f;
 		fish.scaleY = 0.5f;
-		fish.position = FISH_INITIAL_POS;
+//		fish.position = FISH_INITIAL_POS;
+		fish.position = FISH_SECOND_POS;
+		fish.opacity = 0.0f;
 		[self addChild:fish];
-		[fish runAction:[CCMoveTo actionWithDuration:5 position:FISH_SECOND_POS]];
-		timeSinceFishFlipped = -5;
+//		[fish runAction:[CCMoveTo actionWithDuration:5 position:FISH_SECOND_POS]];
+		timeSinceFishFlipped = -2;
 		
 		CCAnimation *fan = [CCAnimation animationWithName:@"fish" delay:0];
 		[fan addFrameWithFilename:@"fishclosed.png"];
@@ -119,7 +121,6 @@
 	
 	float dfDist = fish.position.x - donkey.position.x-donkey.contentSize.width/2;
 	float fcDist = carrot.position.x - fish.position.x;
-	timeSinceFishFlipped += dt;
 	if (mode==ModeAlive) {	
 		if (dfDist < FISH_EAT_DONKEY_DIST) {
 			mode = ModeFishEatingDonkey;
@@ -133,10 +134,18 @@
 
 		}
 		if (abs(fcDist) < FISH_CARROT_REACT_DISTANCE) {
-			// move the fish
 			float moved;
-			if (timeSinceFishFlipped > 1)
-			{
+			// check if fish is visible
+			if (fish.opacity == 0.0f) {
+				// fish is hidden
+				// show fish if carrot has been static for long enough
+				if (timeSinceFishFlipped > 1) {
+					[fish runAction:[CCFadeIn actionWithDuration:1.0f]];
+				} else {
+					timeSinceFishFlipped += dt;					
+				}
+			} else {
+				// move the fish
 				if (fcDist > 0){
 					moved = FISH_VEL*dt;
 					if (!fishFlipped)
