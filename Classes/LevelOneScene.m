@@ -12,7 +12,7 @@
 @implementation LevelOne
 
 
-#define L1_CARROT_INITIAL_POS_X 400
+#define L1_CARROT_INITIAL_POS_X 263
 #define L1_CARROT_INITIAL_POS_Y 290
 
 #define L1_DONKEY_INITIAL_POS_X 40
