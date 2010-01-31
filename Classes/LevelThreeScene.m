@@ -101,6 +101,10 @@
 	[[CCDirector sharedDirector] pushScene: [CCSlideInTTransition transitionWithDuration:1 scene:[EndScene scene]]];	
 }
 
+- (void) moveBackCarrot {
+	[carrot runAction:[[CCMoveTo alloc] initWithDuration:REVERT_TIME position:ccp(263, carrot_initial_pos_y)]];
+}
+
 -(void)playSpike {
 	NSLog(@"playSpike");
 	//TODO
@@ -231,6 +235,7 @@
 				[NSThread detachNewThreadSelector:@selector(play) toTarget:[audioPlayerDict objectForKey:@"applause"] withObject:nil];
 				[self performSelector:@selector(levelCompleted) withObject:nil afterDelay:2];
 				[self performSelector:@selector(playSpike) withObject:nil afterDelay:1.3];
+				[self performSelector:@selector(moveBackCarrot) withObject:nil afterDelay:0.2];
 				//			[NSTimer timerWithTimeInterval:0.8 target:self selector:@selector(playSpike) userInfo:nil repeats:NO];
 			}
 		} else {
