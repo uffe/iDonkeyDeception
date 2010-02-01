@@ -116,6 +116,10 @@
 			// animate donkey falling into pit
 			[donkey runAction:[CCMoveTo actionWithDuration:1.0f position:ccp(375,10)]];
 			[donkey runAction:[CCRotateTo actionWithDuration:0.7 angle:91.0]];
+			// zoom in on pit to see the gory details!
+			// set zoom scale
+			self.anchorPoint = CGPointMake(0.8, 0.0);
+			[self runAction:[CCScaleTo actionWithDuration:1.0 scale:3]];
 			// switch game mode
 			mode = ModeDead;
 			// play level completed sound
